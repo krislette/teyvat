@@ -9,7 +9,11 @@
   <link rel="stylesheet" href="./styles/shared/general.css">
   <link rel="stylesheet" href="./styles/sections/left.css">
   <link rel="stylesheet" href="./styles/sections/middle.css">
+  <link rel="stylesheet" href="./styles/sections/right.css">
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="./assets/icons/genshin-icon.svg" type="image/x-icon">
 </head>
 <body>
   <div class="hero">
@@ -61,6 +65,47 @@
         </div>
       </div>
     </div>
+
+    <!-- Landing page right portion -->
+    <div class="right-container">
+      <nav class="navbar">
+        <div class="audio-controller">
+          <button class="audio-button">
+            <img class="play-icon" src="./assets/icons/play-icon.png" alt="Play Icon">
+          </button>
+          <audio class="genshin-ost" src="./audios/genshin-ost.mp3" loop></audio>
+        </div>
+    
+        <!-- Navigation Links -->
+        <ul class="navbar-content">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <img class="nav-icon" src="./assets/icons/home-icon.png" alt="Home Icon">
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <img class="nav-icon" src="./assets/icons/character-icon.png" alt="Characters Icon">
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <img class="nav-icon" src="./assets/icons/repo-icon.png" alt="Repository Icon">
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="https://genshin.hoyoverse.com/en/home" target="_blank" class="nav-link">
+              <img class="nav-icon" src="./assets/icons/genshin-icon.svg" alt="Genshin Icon">
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
+
+  <script src="./scripts/script.js"></script>
 </body>
 </html>

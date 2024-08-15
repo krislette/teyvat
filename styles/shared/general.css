@@ -41,7 +41,13 @@ body::-webkit-scrollbar-thumb {
 
 .middle-container {
   padding: 1.5rem;
-  margin-left: 1rem;
   display: flex;
   min-height: 100vh;
+}
+
+.right-container {
+  margin-top: -18px;
+  margin-left: 2rem;
+  height: 100vh;
+  padding: 1.5rem;
 }

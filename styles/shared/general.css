@@ -2,8 +2,8 @@
   font-size: 16px;
   font-family: "Poppins", sans-serif;
   --color-black: #1e272c;
-  --color-light-blue: #4acae4;
-  --color-dark-blue: #009dd1;
+  --color-creamy-white: #fff7d1;
+  --color-darker-white: #fff1b9;
   --color-white-front: rgb(253, 253, 253);
   --color-white-back: rgb(246, 246, 246);
 }
@@ -24,7 +24,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: var(--color-dark-blue);
+  background: var(--color-darker-white);
 }
 
 .hero {

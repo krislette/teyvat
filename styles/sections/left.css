@@ -25,7 +25,7 @@
   width: 40px;
   height: 40px;
   border-radius: 100px;
-  border: none;
+  border: 2px solid var(--color-darker-white);
   background-color: var(--color-creamy-white);
   cursor: pointer;
 }

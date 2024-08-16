@@ -1,6 +1,12 @@
+@font-face {
+  font-family: "Hanyi Wenhei";
+  src: url(/fonts/zh-cn.ttf);
+}
+
 :root {
   font-size: 16px;
-  --color-black: #1e272c;
+  font-family: "Hanyi Wenhei", sans-serif;
+  --color-black: #3c3b37;
   --color-creamy-white: #f7e6b1;
   --color-darker-white: #7b642e;
   --color-white-front: #faf6f3;
@@ -30,9 +36,10 @@
   border: none;
   height: 20px;
   width: 230px;
-  padding: 10px;
+  padding: 10px 10px 10px 15px;
   margin-left: 10px;
   margin-top: auto;
+  font-family: "Hanyi Wenhei", sans-serif;
 }
 
 .top-characters-section {

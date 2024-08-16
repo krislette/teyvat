@@ -6,11 +6,12 @@
 :root {
   font-size: 16px;
   font-family: "Hanyi Wenhei", sans-serif;
-  --color-black: #1e272c;
+  --color-black: #3c3b37;
   --color-creamy-white: #f7e6b1;
   --color-darker-white: #7b642e;
   --color-white-front: #faf6f3;
   --color-white-back: #ebe8e0;
+  --round-edge: 20px;
 }
 
 body {

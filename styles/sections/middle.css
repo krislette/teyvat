@@ -3,6 +3,11 @@
   src: url(/fonts/zh-cn.ttf);
 }
 
+@font-face {
+  font-family: "Hanyi Wenhei Drip";
+  src: url(/fonts/zh-cn-drip.ttf);
+}
+
 :root {
   font-size: 16px;
   font-family: "Hanyi Wenhei", sans-serif;
@@ -12,6 +17,7 @@
   --color-white-front: #faf6f3;
   --color-white-back: #ebe8e0;
   --round-edge: 20px;
+  --circle-edge: 50px;
 }
 
 .card {
@@ -28,9 +34,10 @@
   width: 100%;
   height: 40rem;
   background-color: var(--color-white-front);
-  border-radius: var(--round-edge);
-  background-image: url(/assets/art/hero.png);
+  border-radius: var(--circle-edge);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/assets/art/hero.png);
   background-size: cover;
+  background-position: center;
   margin-bottom: 15px;
 }
 
@@ -41,7 +48,50 @@
   background-color: var(--color-creamy-white);
   border-top: 14px solid var(--color-white-back);
   border-right: 14px solid var(--color-white-back);
-  border-top-right-radius: var(--round-edge);
-  border-bottom-left-radius: var(--round-edge);
+  border-top-right-radius: var(--circle-edge);
+  border-bottom-left-radius: var(--circle-edge);
   bottom: 0;
+}
+
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  width: calc(50% - 50px);
+  margin: 13rem 0 0 0.5rem;
+}
+
+.intro-container h1, 
+.intro-container p {
+  color: var(--color-white-back);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin: 0;
+  padding: 0;
+}
+
+.intro-container h1 {
+  font-family: "Hanyi Wenhei Drip", sans-serif;
+}
+
+.intro-container p {
+  font-size: 14px;
+  width: 95%;
+}
+
+.see-button {
+  margin-top: 8px;
+  border: none;
+  background-color: var(--color-creamy-white);
+  border-radius: var(--round-edge);
+  cursor: pointer;
+  width: 12rem;
+  height: 2.5rem;
+}
+
+.see-link {
+  text-decoration: none;
+  font-family: "Hanyi Wenhei", sans-serif;
+  color: var(--color-black);
+  border-color: var(--color-darker-white);
 }

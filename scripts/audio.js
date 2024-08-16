@@ -17,4 +17,5 @@ function handleMusic() {
 
 audioButton.addEventListener("click", () => {
     handleMusic();
+    genshinOst.volume = 1.0;
 });

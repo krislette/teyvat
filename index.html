@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Celestia</title>
 
-  <!-- CSS and Font/s -->
+  <!-- CSS -->
   <link rel="stylesheet" href="./styles/shared/general.css">
   <link rel="stylesheet" href="./styles/sections/left.css">
   <link rel="stylesheet" href="./styles/sections/middle.css">
   <link rel="stylesheet" href="./styles/sections/right.css">
-  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/sections/main.css">
 
   <!-- Favicon -->
   <link rel="icon" href="./assets/icons/genshin-icon.svg" type="image/x-icon">
@@ -98,13 +98,13 @@
           </li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link anchor-primary">
+            <a href="#main" class="nav-link anchor-primary">
               <img class="nav-icon" src="./assets/icons/character-icon.png" alt="Characters Icon">
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link anchor-primary">
+            <a href="https://github.com/krislette/celestia" class="nav-link anchor-primary">
               <img class="nav-icon" src="./assets/icons/repo-icon.png" alt="Repository Icon">
             </a>
           </li>
@@ -121,7 +121,8 @@
   <!-- End of landing page -->
 
   <!-- Start of website content -->
-  <div class="main">
+  <div class="main" id="main">
+    <h1 class="characters-heading">Characters</h1>
     <div class="characters-grid">
     </div>
   </div>

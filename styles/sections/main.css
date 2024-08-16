@@ -1,10 +1,117 @@
+@font-face {
+  font-family: "Hanyi Wenhei";
+  src: url(/fonts/zh-cn.ttf);
+}
+
+:root {
+  font-size: 16px;
+  font-family: "Hanyi Wenhei", sans-serif;
+  --color-black: #3c3b37;
+  --color-creamy-white: #f7e6b1;
+  --color-darker-white: #dec086;
+  --color-white-front: #faf6f3;
+  --color-white-back: #ebe8e0;
+  --color-five-star: #c1814b;
+  --color-four-star: #886ab4;
+  --color-characters-section: #fdfbf8;
+  --color-character-container: #fdf7ea;
+  --color-border: #f7e6d4;
+  --round-edge: 20px;
+}
+
 .main {
-  margin-top: 60px;
+  background-color: var(--color-characters-section);
+}
+
+.characters-heading {
+  padding-top: 35px;
+  margin-bottom: 30px;
+  text-align: center;
+  justify-content: center;
+  padding-bottom: 15px;
+  color: var(--color-black);
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  font-size: 35px;
 }
 
 .characters-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
+  gap: 15px;
+  width: 87.5%;
+  margin-left: 2.5rem;
+}
+
+.character-container {
+  border-radius: var(--round-edge);
+  background-color: var(--color-character-container);
+  border: 5px solid var(--color-border);
+  text-align: center;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.character-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--round-edge);
+}
+
+.five-star {
+  background-color: var(--color-five-star);
+}
+
+.four-star {
+  background-color: var(--color-four-star);
+}
+
+.character-rarity {
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%);
+}
+
+.character-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--round-edge);
+}
+
+.character-name {
+  padding: 0;
+  height: 70px;
+}
+
+.character-title {
+  height: 30px;
+  margin-bottom: 50px;
+}
+
+.character-title span {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+
+/* .character-description {
+  padding-top: 15px;
+  font-size: 12px;
+  line-height: 1.1;
+  height: 12.5rem;
+} */
+
+.character-view-button {
+  background-color: var(--color-creamy-white);
+  color: var(--color-black);
+  border: 2px solid var(--color-darker-white);
+  font-family: "Hanyi Wenhei", sans-serif;
+  width: 10rem;
+  height: 2.5rem;
+  border-radius: var(--round-edge);
+  cursor: pointer;
 }
 
 @media (max-width: 2000px) {
@@ -47,50 +154,4 @@
   .characters-grid {
     grid-template-columns: 1fr;
   }
-}
-
-/**************************************************************************************/
-
-.character-container {
-  padding-top: 40px;
-  padding-bottom: 25px;
-  padding-left: 25px;
-  padding-right: 25px;
-  border-right: 1px solid rgb(231, 231, 231);
-  border-bottom: 1px solid rgb(231, 231, 231);
-  display: flex;
-  flex-direction: column;
-}
-
-.character-image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 180px;
-  margin-bottom: 20px;
-}
-
-.character-image {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.character-name {
-  height: 40px;
-  margin-bottom: 5px;
-}
-
-.character-title {
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.character-spacer {
-  flex: 1;
-}
-
-.character-view-button {
-  width: 100%;
-  padding: 8px;
-  border-radius: 50px;
 }

@@ -14,6 +14,10 @@
   --round-edge: 20px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--color-black);
   background-color: var(--color-white-back);
@@ -60,8 +64,8 @@ body::-webkit-scrollbar-thumb {
 
 .button-primary:hover {
   background-color: var(--color-darker-white);
-  border: 1px solid var(--color-darker-white);
-  box-shadow: 0 0 10px var(--color-darker-white);
+  background-color: var(--color-creamy-white);
+  border: 1px solid var(--color-black);
 }
 
 .button-primary:active {

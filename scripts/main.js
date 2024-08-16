@@ -2,37 +2,41 @@ import { fetchCharacters, fetchCharacterProfile, fetchCharacterIcon } from "./fe
 
 async function displayCharacters() {
     const genshinCharacters = await fetchCharacters();
-    let charactersHTML = "";
 
-    genshinCharacters.forEach(async (character) => {
+    const characterPromises = genshinCharacters.map(async (character) => {
         const characterProfile = await fetchCharacterProfile(character);
         const characterIcon = await fetchCharacterIcon(character);
+        const characterRarity = characterProfile.rarity === 5 ? "five-star" : "four-star";
 
-        charactersHTML += `
+        return `
             <div class="character-container">
-                <div class="character-image-container">
+                <div class="character-image-container ${characterRarity}">
                     <img class="character-image" src="${characterIcon}">
+                    <div class="character-rarity">
+                        <img src="assets/icons/${characterRarity === "five-star" ? "five" : "four"}-star-icon.png">
+                    </div>
                 </div>
 
                 <div class="character-name">
-                    ${characterProfile.name}
+                    <h3>${characterProfile.name}</h3>
                 </div>
 
                 <div class="character-title">
-                    ${characterProfile.title}
+                    <span>${characterProfile.title}</span>
                 </div>
 
                 <div class="character-spacer">
                 </div>
 
-                <button class="character-view-button" data-character-id="${characterProfile.id}">
+                <button class="character-view-button button-primary" data-character-id="${characterProfile.id}">
                     View Character
                 </button>
             </div>
         `;
     });
 
+    const charactersHTML = (await Promise.all(characterPromises)).join('');
     document.querySelector(".characters-grid").innerHTML = charactersHTML;
 }
 
-await displayCharacters();
+displayCharacters();

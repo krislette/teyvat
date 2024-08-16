@@ -42,6 +42,10 @@
   font-family: "Hanyi Wenhei", sans-serif;
 }
 
+.search-bar:focus {
+  outline-color: var(--color-darker-white);
+}
+
 .top-characters-section {
   background-color: var(--color-white-front);
   border-radius: var(--round-edge);

@@ -36,8 +36,21 @@ async function displayCharacters() {
         `;
     });
 
-    const charactersHTML = (await Promise.all(characterPromises)).join('');
+    const charactersHTML = (await Promise.all(characterPromises)).join("");
     document.querySelector(".characters-grid").innerHTML = charactersHTML;
+
+    // Delay screen for 8 seconds before fading out
+    await new Promise(resolve => setTimeout(resolve, 8000));
+
+    // Trigger fade-out transition
+    const loadingScreen = document.querySelector(".loading-screen");
+    loadingScreen.classList.add("hidden");
+
+    // Wait for the transition to complete before fully hiding the loading screen
+    setTimeout(() => {
+        loadingScreen.style.display = "none";
+        document.querySelector(".hero").style.display = "flex";
+    }, 1000);
 }
 
-displayCharacters();
+document.addEventListener("DOMContentLoaded", displayCharacters);

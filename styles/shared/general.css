@@ -8,7 +8,7 @@
   font-family: "Hanyi Wenhei", sans-serif;
   --color-black: #3c3b37;
   --color-creamy-white: #f7e6b1;
-  --color-darker-white: #7b642e;
+  --color-darker-white: #dec086;
   --color-white-front: #faf6f3;
   --color-white-back: #ebe8e0;
   --round-edge: 20px;
@@ -56,4 +56,15 @@ body::-webkit-scrollbar-thumb {
   margin-left: 2rem;
   height: 100vh;
   padding: 1.5rem;
+}
+
+.button-primary:hover {
+  background-color: var(--color-darker-white);
+  border: 1px solid var(--color-darker-white);
+}
+
+.button-primary:active {
+  background: var(--color-darker-white);
+  border-color: var(--color-darker-white);
+  box-shadow: none;
 }

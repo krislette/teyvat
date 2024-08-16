@@ -8,7 +8,7 @@
   font-family: "Hanyi Wenhei", sans-serif;
   --color-black: #3c3b37;
   --color-creamy-white: #f7e6b1;
-  --color-darker-white: #7b642e;
+  --color-darker-white: #dec086;
   --color-white-front: #faf6f3;
   --color-white-back: #ebe8e0;
   --round-edge: 20px;
@@ -26,30 +26,22 @@
 .card .card-image {
   position: relative;
   width: 100%;
-  height: 30rem;
+  height: 40rem;
   background-color: var(--color-white-front);
   border-radius: var(--round-edge);
-  background-image: url(https://genshin.global/wp-content/uploads/2022/07/raiden-venti-zhongli-follower-twitter-official-desktop-wallpaper-1200x675.jpg);
+  background-image: url(/assets/art/hero.png);
   background-size: cover;
   margin-bottom: 15px;
 }
 
-.card .card-content {
-  position: relative;
-  width: 100%;
-  height: 165px;
-  background-color: var(--color-white-front);
-  border-radius: var(--round-edge);
-  border-top-left-radius: 0;
-}
-
-.card .card-content .shortcut-section {
+.shortcut-section {
   position: absolute;
-  top: -80px;
-  height: 14.5rem;
-  width: 50%;
+  height: 12rem;
+  width: calc(50% - 10px);
   background-color: var(--color-creamy-white);
-  border-top: 15px solid var(--color-white-back);
-  border-right: 15px solid var(--color-white-back);
+  border-top: 14px solid var(--color-white-back);
+  border-right: 14px solid var(--color-white-back);
   border-top-right-radius: var(--round-edge);
+  border-bottom-left-radius: var(--round-edge);
+  bottom: 0;
 }

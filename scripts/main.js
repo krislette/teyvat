@@ -21,12 +21,9 @@ async function displayCharacters() {
                     </div>
                 </div>
 
-                <div class="character-name">
+                <div class="character-profile">
                     <h3>${characterProfile.name}</h3>
-                </div>
-
-                <div class="character-title">
-                    <span>${characterProfile.title ? characterProfile.title : "Honorary Knight"}</span>
+                    <span class="character-title">${characterProfile.title ? characterProfile.title : "Honorary Knight"}</span>
                 </div>
 
                 <div class="character-spacer">

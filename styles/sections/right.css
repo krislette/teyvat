@@ -1,11 +1,10 @@
 :root {
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
   --color-black: #1e272c;
-  --color-creamy-white: #fff7d1;
-  --color-darker-white: #fff1b9;
-  --color-white-front: rgb(253, 253, 253);
-  --color-white-back: rgb(246, 246, 246);
+  --color-creamy-white: #f7e6b1;
+  --color-darker-white: #7b642e;
+  --color-white-front: #faf6f3;
+  --color-white-back: #ebe8e0;
   --round-edge: 20px;
 }
 

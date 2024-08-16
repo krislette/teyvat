@@ -7,6 +7,7 @@ async function displayCharacters() {
         const characterProfile = await fetchCharacterProfile(character);
         const characterIcon = await fetchCharacterIcon(character);
         const characterRarity = characterProfile.rarity === 5 ? "five-star" : "four-star";
+        const chararacterVision = characterProfile.vision.toLowerCase();
 
         return `
             <div class="character-container">
@@ -15,6 +16,9 @@ async function displayCharacters() {
                     <div class="character-rarity">
                         <img src="assets/icons/${characterRarity === "five-star" ? "five" : "four"}-star-icon.png">
                     </div>
+                    <div class="character-vision">
+                        <img src="assets/icons/${chararacterVision}-icon.png">
+                    </div>
                 </div>
 
                 <div class="character-name">
@@ -22,7 +26,7 @@ async function displayCharacters() {
                 </div>
 
                 <div class="character-title">
-                    <span>${characterProfile.title}</span>
+                    <span>${characterProfile.title ? characterProfile.title : "Honorary Knight"}</span>
                 </div>
 
                 <div class="character-spacer">

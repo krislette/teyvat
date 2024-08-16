@@ -3,6 +3,11 @@
   src: url(/fonts/zh-cn.ttf);
 }
 
+@font-face {
+  font-family: "Hanyi Wenhei Drip";
+  src: url(/fonts/zh-cn-drip.ttf);
+}
+
 :root {
   font-size: 16px;
   font-family: "Hanyi Wenhei", sans-serif;
@@ -32,6 +37,7 @@
   color: var(--color-black);
   text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   font-size: 35px;
+  font-family: "Hanyi Wenhei Drip", sans-serif;
 }
 
 .characters-grid {
@@ -66,10 +72,20 @@
   background-color: var(--color-four-star);
 }
 
+.character-vision {
+  position: absolute;
+  top: 0;
+}
+
+.character-vision img {
+  width: 40px;
+  height: auto;
+}
+
 .character-rarity {
   position: absolute;
   bottom: 0;
-  left: 50%; /* Center it horizontally */
+  left: 50%; 
   transform: translateX(-50%);
 }
 
@@ -95,14 +111,6 @@
   padding: 0;
   font-size: 15px;
 }
-
-/* Keep it for now and put it later on another CSS file */
-/* .character-description {
-  padding-top: 15px;
-  font-size: 12px;
-  line-height: 1.1;
-  height: 12.5rem;
-} */
 
 .character-view-button {
   background-color: var(--color-creamy-white);

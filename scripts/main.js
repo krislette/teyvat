@@ -3,6 +3,7 @@ import { fetchCharacters, fetchCharacterProfile, fetchCharacterIcon } from "./fe
 async function displayCharacters() {
     const genshinCharacters = await fetchCharacters();
 
+    // Created an array of promises to fetch character profile and icon
     const characterPromises = genshinCharacters.map(async (character) => {
         const characterProfile = await fetchCharacterProfile(character);
         const characterIcon = await fetchCharacterIcon(character);

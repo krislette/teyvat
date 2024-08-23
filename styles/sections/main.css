@@ -22,6 +22,7 @@
   --color-character-container: #fdf7ea;
   --color-border: #f7e6d4;
   --round-edge: 20px;
+  --genshin-cursor: url("/assets/art/cursor.png"), auto;
 }
 
 .main {
@@ -120,7 +121,7 @@
   width: 10rem;
   height: 2.5rem;
   border-radius: var(--round-edge);
-  cursor: pointer;
+  cursor: var(--genshin-cursor);
 }
 
 @media (max-width: 2000px) {

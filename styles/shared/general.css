@@ -12,6 +12,7 @@
   --color-white-front: #faf6f3;
   --color-white-back: #ebe8e0;
   --round-edge: 20px;
+  --genshin-cursor: url("/assets/art/cursor.png"), auto;
 }
 
 html {
@@ -21,6 +22,7 @@ html {
 body {
   color: var(--color-black);
   background-color: var(--color-white-back);
+  cursor: var(--genshin-cursor);
   margin: 0;
   padding: 0;
 }
@@ -35,6 +37,10 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
   background: var(--color-darker-white);
+}
+
+a {
+  cursor: var(--genshin-cursor);
 }
 
 .hero {

@@ -1,61 +1,53 @@
-import { fetchCharacters, fetchCharacterProfile, fetchCharacterIcon } from "./fetch.js";
+import { characters, loadCharacters } from "./data.js";
 import { handleView } from "./view.js";
 
 async function displayCharacters() {
-    const genshinCharacters = await fetchCharacters();
+    // Wait for characters array to get populated
+    await loadCharacters();
 
-    // Created an array of promises to fetch character profile and icon
-    const characterPromises = genshinCharacters.map(async (character) => {
-        const characterProfile = await fetchCharacterProfile(character);
-        const characterIcon = await fetchCharacterIcon(character);
-        const characterRarity = characterProfile.rarity === 5 ? "five-star" : "four-star";
-        const chararacterVision = characterProfile.vision.toLowerCase();
+    const charactersHTML = characters.map((character) => `
+        <div class="character-container">
+            <div class="character-image-container ${character.rarity === 5 ? "five-star" : "four-star"}">
+                <img class="character-image" src="${character.icon}">
 
-        return `
-            <div class="character-container">
-                <div class="character-image-container ${characterRarity}">
-                    <img class="character-image" src="${characterIcon}">
-                    <div class="character-rarity">
-                        <img src="assets/icons/${characterRarity === "five-star" ? "five" : "four"}-star-icon.png">
-                    </div>
-                    <div class="character-vision">
-                        <img src="assets/icons/${chararacterVision}-icon.png">
-                    </div>
+                <div class="character-rarity">
+                    <img src="assets/icons/${character.rarity === 5 ? "five" : "four"}-star-icon.png">
                 </div>
 
-                <div class="character-profile">
-                    <h3>${characterProfile.name}</h3>
-                    <span class="character-title">${characterProfile.title ? characterProfile.title : "Honorary Knight"}</span>
+                <div class="character-vision">
+                    <img src="assets/icons/${character.vision.toLowerCase()}-icon.png">
                 </div>
-
-                <div class="character-spacer">
-                </div>
-
-                <button class="character-view-button button-primary js-character-view-button" data-character-id="${characterProfile.id}">
-                    View Character
-                </button>
             </div>
-        `;
-    });
 
-    const charactersHTML = (await Promise.all(characterPromises)).join("");
+            <div class="character-profile">
+                <h3>${character.name}</h3>
+                <span class="character-title">${character.title || "Honorary Knight"}</span>
+            </div>
+
+            <div class="character-spacer"></div>
+
+            <button class="character-view-button button-primary js-character-view-button" data-character-id="${character.id}">
+                View Character
+            </button>
+        </div>
+    `).join("");
+
     document.querySelector(".characters-grid").innerHTML = charactersHTML;
 
-    // // Delay screen for 8 seconds before fading out
-    // await new Promise(resolve => setTimeout(resolve, 8000));
+    handleView();
 
-    // // Trigger fade-out transition
-    // const loadingScreen = document.querySelector(".loading-screen");
-    // loadingScreen.classList.add("hidden");
+    // Delay screen for 8 seconds before fading out
+    await new Promise(resolve => setTimeout(resolve, 8000));
 
-    // // Wait for the transition to complete before fully hiding the loading screen
-    // setTimeout(() => {
-    //     loadingScreen.style.display = "none";
-    //     document.querySelector(".hero").style.display = "flex";
-    // }, 1000);
+    // Trigger fade-out transition
+    const loadingScreen = document.querySelector(".loading-screen");
+    loadingScreen.classList.add("hidden");
+
+    // Wait for the transition to complete before fully hiding the loading screen
+    setTimeout(() => {
+        loadingScreen.style.display = "none";
+        document.querySelector(".hero").style.display = "flex";
+    }, 1000);
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    await displayCharacters();
-    handleView();
-});
+document.addEventListener("DOMContentLoaded", displayCharacters);

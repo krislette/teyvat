@@ -1,4 +1,5 @@
 import { fetchCharacters, fetchCharacterProfile, fetchCharacterIcon } from "./fetch.js";
+import { handleView } from "./view.js";
 
 async function displayCharacters() {
     const genshinCharacters = await fetchCharacters();
@@ -30,7 +31,7 @@ async function displayCharacters() {
                 <div class="character-spacer">
                 </div>
 
-                <button class="character-view-button button-primary" data-character-id="${characterProfile.id}">
+                <button class="character-view-button button-primary js-character-view-button" data-character-id="${characterProfile.id}">
                     View Character
                 </button>
             </div>
@@ -40,18 +41,21 @@ async function displayCharacters() {
     const charactersHTML = (await Promise.all(characterPromises)).join("");
     document.querySelector(".characters-grid").innerHTML = charactersHTML;
 
-    // Delay screen for 8 seconds before fading out
-    await new Promise(resolve => setTimeout(resolve, 8000));
+    // // Delay screen for 8 seconds before fading out
+    // await new Promise(resolve => setTimeout(resolve, 8000));
 
-    // Trigger fade-out transition
-    const loadingScreen = document.querySelector(".loading-screen");
-    loadingScreen.classList.add("hidden");
+    // // Trigger fade-out transition
+    // const loadingScreen = document.querySelector(".loading-screen");
+    // loadingScreen.classList.add("hidden");
 
-    // Wait for the transition to complete before fully hiding the loading screen
-    setTimeout(() => {
-        loadingScreen.style.display = "none";
-        document.querySelector(".hero").style.display = "flex";
-    }, 1000);
+    // // Wait for the transition to complete before fully hiding the loading screen
+    // setTimeout(() => {
+    //     loadingScreen.style.display = "none";
+    //     document.querySelector(".hero").style.display = "flex";
+    // }, 1000);
 }
 
-document.addEventListener("DOMContentLoaded", displayCharacters);
+document.addEventListener("DOMContentLoaded", async () => {
+    await displayCharacters();
+    handleView();
+});

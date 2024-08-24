@@ -22,5 +22,6 @@
   --color-character-container: #fdf7ea;
   --color-border: #f7e6d4;
   --round-edge: 20px;
+  --circle-edge: 50px;
   --genshin-cursor: url("/assets/art/cursor.png"), auto;
 }

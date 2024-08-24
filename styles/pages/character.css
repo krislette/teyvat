@@ -1,0 +1,71 @@
+@import url("/styles/shared/shared.css");
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: var(--color-white-back);
+}
+
+.book-container {
+  width: 800px;
+  height: 500px;
+  background-color: var(--color-white-front);
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  display: flex;
+  position: relative;
+  padding: 0 20px 0 20px;
+  overflow: hidden;
+}
+
+.book-container::before, .book-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15px;
+  background-color: var(--color-middle-dark);
+}
+
+.book-container::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.left-page, .right-page {
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.left-page {
+  border-right: 5px solid var(--color-white-front);
+  position: relative;
+}
+
+.right-page {
+  position: relative;
+}
+
+.character-icon {
+  position: relative;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: var(--color-icon-background);
+  border: 3px solid var(--color-darker-white);
+  box-sizing: border-box;
+}
+
+.character-icon .image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--color-photo-border);
+  box-sizing: border-box;
+}

@@ -52,3 +52,23 @@ export async function fetchCharacterIcon(character) {
         console.error(error.message);
     }
 }
+
+export async function fetchCharacterNamecard(character) {
+    const characterNamecardApi = `https://genshin.jmp.blue/characters/${character}/namecard-background`;
+
+    try {
+        const response = await fetch(characterNamecardApi);
+        if (!response.ok) {
+            throw new Error(`Response Status: ${response.status}`);
+        }
+        const characterNamecardBlob = await response.blob();
+
+        // Convert blob into an image
+        const characterNamecard = URL.createObjectURL(characterNamecardBlob);
+
+        // Then return the image
+        return characterNamecard;
+    } catch (error) {
+        console.error(error.message);
+    }
+}

@@ -72,3 +72,25 @@ export async function fetchCharacterNamecard(character) {
         console.error(error.message);
     }
 }
+
+export async function fetchCharacterFavicon(character) {
+    // This should be icon-side but some characters doesn't have them
+    // So I settled with the plain icon
+    const characterFaviconApi = `https://genshin.jmp.blue/characters/${character}/icon`;
+
+    try {
+        const response = await fetch(characterFaviconApi);
+        if (!response.ok) {
+            throw new Error(`Response Status: ${response.status}`);
+        }
+        const characterFaviconBlob = await response.blob();
+
+        // Convert blob into an image
+        const characterFavicon = URL.createObjectURL(characterFaviconBlob);
+
+        // Then return the image
+        return characterFavicon;
+    } catch (error) {
+        console.error(error.message);
+    } 
+}

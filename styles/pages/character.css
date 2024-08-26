@@ -141,13 +141,15 @@ body {
 .signature-box {
   margin-top: 8px;
   margin-bottom: 65px;
-  padding: 0 10px 10px 10px;
+  padding: 8px 10px 8px 10px;
   border: 2px solid var(--color-page-slice); 
   width: 84%;
-  height: 80px;
+  height: 73px;
 }
 
 .signature-text {
   font-size: 14px;
   color: var(--color-brown);
+  padding: 0;
+  margin: 0;
 }

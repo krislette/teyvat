@@ -1,4 +1,10 @@
-import { fetchCharacters, fetchCharacterProfile, fetchCharacterIcon, fetchCharacterFavicon } from "./fetch.js";
+import { 
+    fetchCharacters, 
+    fetchCharacterProfile, 
+    fetchCharacterIcon, 
+    fetchCharacterNamecard, 
+    fetchCharacterFavicon 
+} from "./fetch.js";
 
 export let characters = [];
 
@@ -10,11 +16,13 @@ export async function loadCharacters() {
         const characterPromises = genshinCharacters.map(async (character) => {
             const characterProfile = await fetchCharacterProfile(character);
             const characterIcon = await fetchCharacterIcon(character);
+            const characterNamecard = await fetchCharacterNamecard(character);
             const characterFavicon = await fetchCharacterFavicon(character);
 
             return {
                 ...characterProfile,
                 icon: characterIcon,
+                namecard: characterNamecard,
                 favicon: characterFavicon
             };
         });

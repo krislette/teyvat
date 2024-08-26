@@ -56,6 +56,16 @@ export async function fetchCharacterIcon(character) {
 export async function fetchCharacterNamecard(character) {
     const characterNamecardApi = `https://genshin.jmp.blue/characters/${character}/namecard-background`;
 
+    if (character === "traveler-anemo" 
+        || character === "traveler-geo"
+        || character === "traveler-electro"
+        || character === "traveler-dendro"
+        || character === "traveler-hydro"
+        || character === "traveler-pyro"
+        || character === "traveler-cryo") {
+        return `assets/traveler/traveler-namecard.png`;
+    }
+
     try {
         const response = await fetch(characterNamecardApi);
         if (!response.ok) {

@@ -1,6 +1,6 @@
 import { characters, getCharacterById, loadCharacters } from "./data.js";
 
-const DESCRIPTION_LIMIT = 150;
+const DESCRIPTION_LIMIT = 200;
 
 async function displayCharacter() {
     // Fetch the character to be displayed from the URL
@@ -54,7 +54,7 @@ function createLeftPageHTML(character) {
 
             <!-- Signature Box -->
             <div class="signature-box">
-                <p class="signature-text">${formatDescription(character.description)}</p>
+                <p class="signature-text">${character.description ? formatDescription(character.description) : "No signature"}</p>
             </div>
         </div>
     `;

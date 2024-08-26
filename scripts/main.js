@@ -1,5 +1,5 @@
 import { characters, loadCharacters } from "./data.js";
-import { handleView } from "./view.js";
+import { handleViewButtons } from "./view.js";
 
 async function displayCharacters() {
     // Wait for characters array to get populated
@@ -34,20 +34,20 @@ async function displayCharacters() {
 
     document.querySelector(".characters-grid").innerHTML = charactersHTML;
 
-    handleView();
+    handleViewButtons();
 
-    // Delay screen for 8 seconds before fading out
-    await new Promise(resolve => setTimeout(resolve, 8000));
+    // // Delay screen for 8 seconds before fading out
+    // await new Promise(resolve => setTimeout(resolve, 8000));
 
-    // Trigger fade-out transition
-    const loadingScreen = document.querySelector(".loading-screen");
-    loadingScreen.classList.add("hidden");
+    // // Trigger fade-out transition
+    // const loadingScreen = document.querySelector(".loading-screen");
+    // loadingScreen.classList.add("hidden");
 
-    // Wait for the transition to complete before fully hiding the loading screen
-    setTimeout(() => {
-        loadingScreen.style.display = "none";
-        document.querySelector(".hero").style.display = "flex";
-    }, 1000);
+    // // Wait for the transition to complete before fully hiding the loading screen
+    // setTimeout(() => {
+    //     loadingScreen.style.display = "none";
+    //     document.querySelector(".hero").style.display = "flex";
+    // }, 1000);
 }
 
 document.addEventListener("DOMContentLoaded", displayCharacters);

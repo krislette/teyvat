@@ -1,4 +1,4 @@
-export function handleView() {
+export function handleViewButtons() {
     document.querySelectorAll(".js-character-view-button").forEach((button) => {
         button.addEventListener("click", () => {
             const characterToView = button.dataset.characterId;

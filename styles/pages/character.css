@@ -45,6 +45,9 @@ body {
 .left-page {
   border-right: 5px solid var(--color-white-front);
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .right-page {
@@ -66,6 +69,6 @@ body {
   width: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 5px solid var(--color-photo-border);
+  border: 6px solid var(--color-photo-border);
   box-sizing: border-box;
 }

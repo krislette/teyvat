@@ -13,8 +13,9 @@
   font-family: "Hanyi Wenhei", sans-serif;
   --color-black: #3c3b37;
   --color-brown: #766d5f;
-  --color-blue: #3f4955;
+  --color-blue: #4a5067;
   --color-yellow: #dccba7;
+  --color-orange-brown: #cbbca6;
   --color-creamy-white: #f7e6b1;
   --color-darker-white: #dec086;
   --color-white-front: #faf6f3;
@@ -30,7 +31,6 @@
   --color-icon-background: #d19d78;
   --color-page-shadow: #f0ebe1;
   --color-green: #a7b981;
-  --color-orange-brown: #cbbca6;
   --round-edge: 20px;
   --circle-edge: 50px;
   --genshin-cursor: url("/assets/art/cursor.png"), auto;

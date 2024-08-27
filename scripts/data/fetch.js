@@ -17,6 +17,7 @@ async function fetchImage(apiUrl) {
     }
 }
 
+// Helper function for all JSON fetch requests
 async function fetchJson(apiUrl) {
     try {
         const response = await fetch(apiUrl);

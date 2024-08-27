@@ -1,0 +1,1 @@
+export const formatBirthday = (birthday) => birthday.substring(5).startsWith("0") ? birthday.substring(6) : birthday.substring(5);

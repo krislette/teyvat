@@ -242,3 +242,20 @@ hr {
   font-weight: bold;
   color: var(--color-blue);
 }
+
+.caption {
+  display: flex;
+  margin: 20px auto 5px 15px;
+}
+
+.caption img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(85%);
+}
+
+.caption span {
+  font-size: 17px;
+  color: var(--color-dark-brown);
+  margin-left: 5px;
+}

@@ -1,7 +1,7 @@
 import { characters, getCharacterById, loadCharacters } from "./data/data.js";
 import { toggleButtons } from "./character/details.js";
-
-const DESCRIPTION_LIMIT = 200;
+import { formatDescription } from "./utils/description.js";
+import { formatBirthday } from "./utils/birthday.js";
 
 async function displayCharacter() {
     // Fetch the character to be displayed from the URL
@@ -18,8 +18,9 @@ async function displayCharacter() {
             document.querySelector(".favicon").href = character.favicon;
             document.querySelector("title").textContent = `View ${character.name}`;
 
-            // Create left page HTML
+            // Create left & right page HTMLs
             document.querySelector(".left-page").innerHTML = createLeftPageHTML(character);
+            // document.querySelector(".right-page").innerHTML = createRightPageHTML(character);
         } else {
             console.error("Character not found.");
         }
@@ -65,6 +66,55 @@ function createLeftPageHTML(character) {
     `;
 }
 
-const formatDescription = (description) => description.length > DESCRIPTION_LIMIT ? description.substring(0, DESCRIPTION_LIMIT) + "..." : description;
+// function createRightPageHTML(character) {
+//     return `
+//         <div class="details-card">
+//             <!-- Toggle buttons -->
+//             <div class="details-toggle-buttons">
+//                 <button class="toggle-button main-page-button active">
+//                     Main Page
+//                 </button>
+//                 <button class="toggle-button constellations-button">
+//                     Constellations
+//                 </button>
+//             </div>
+
+//             <hr>
+
+//             <!-- Birthday & Rarity -->
+//             <div class="info-container">
+//                 <!-- Rarity container -->
+//                 <div class="info-box">
+//                     <img src="./assets/icons/achievements-icon.png" alt="Rarity Icon">
+                    
+//                     <!-- Title and value -->
+//                     <div class="title-value">
+//                         <div class="info-title">
+//                             Rarity
+//                         </div>
+//                         <div class="info-value">
+//                             ${character.rarity}
+//                         </div>
+//                     </div>
+//                 </div>
+                
+//                 <!-- Birthday Container -->
+//                 <div class="info-box">
+//                     <img src="./assets/icons/abyss-icon.png" alt="Birthday Icon">
+                    
+//                     <!-- Title and valule -->
+//                     <div class="title-value">
+//                         <div class="info-title">
+//                             Birthday
+//                         </div>
+//                         <div class="info-value">
+//                             ${formatBirthday(character.birthday)}
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     `;
+// }
 
 document.addEventListener("DOMContentLoaded", displayCharacter);

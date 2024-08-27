@@ -3,7 +3,8 @@ import {
     fetchCharacterProfile, 
     fetchCharacterIcon, 
     fetchCharacterNamecard, 
-    fetchCharacterFavicon 
+    fetchCharacterFavicon,
+    fetchCharacterTalents
 } from "./fetch.js";
 
 export let characters = [];
@@ -18,9 +19,11 @@ export async function loadCharacters() {
             const characterIcon = await fetchCharacterIcon(character);
             const characterNamecard = await fetchCharacterNamecard(character);
             const characterFavicon = await fetchCharacterFavicon(character);
+            const characterTalents = await fetchCharacterTalents(character);
 
             return {
                 ...characterProfile,
+                ...characterTalents,
                 icon: characterIcon,
                 namecard: characterNamecard,
                 favicon: characterFavicon

@@ -1,56 +1,48 @@
-export async function fetchCharacters() {
-    const genshinCharactersApi = "https://genshin.jmp.blue/characters/";
-
+// Helper function for all image fetch requests
+async function fetchImage(apiUrl) {
     try {
-        // Fetch the characters from the API
-        const response = await fetch(genshinCharactersApi);
+        const response = await fetch(apiUrl);
         if (!response.ok) {
-            throw new Error(`Response Status: ${response.status}`);
+            throw new Error(`Failed to fetch ${apiUrl}: ${response.status}`);
         }
-        const genshinCharacters = await response.json();
 
-        // This returns an array of characters based on the API
-        return genshinCharacters;
+        // Convert the blob into an image
+        const blob = await response.blob();
+
+        // Then return the image URL
+        return URL.createObjectURL(blob);
     } catch (error) {
         console.error(error.message);
+        return null;
     }
+}
+
+async function fetchJson(apiUrl) {
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch ${apiUrl}: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error(error.message);
+        return null;
+    }
+} 
+
+export async function fetchCharacters() {
+    const genshinCharactersApi = "https://genshin.jmp.blue/characters/";
+    return fetchJson(genshinCharactersApi);
 }
 
 export async function fetchCharacterProfile(character) {
     const characterProfileApi = `https://genshin.jmp.blue/characters/${character}`;
-
-    try {
-        const response = await fetch(characterProfileApi);
-        if (!response.ok) {
-            throw new Error(`Response Status: ${response.status}`);
-        }
-        const characterProfile = await response.json();
-
-        // Return all character characteristics
-        return characterProfile;
-    } catch (error) {
-        console.error(error.message);
-    }
+    return fetchJson(characterProfileApi);
 }
 
 export async function fetchCharacterIcon(character) {
     const characterIconApi = `https://genshin.jmp.blue/characters/${character}/icon-big`;
-
-    try {
-        const response = await fetch(characterIconApi);
-        if (!response.ok) {
-            throw new Error(`Response Status: ${response.status}`);
-        }
-        const characterIconBlob = await response.blob();
-
-        // Converet blob into an image
-        const characterIcon = URL.createObjectURL(characterIconBlob);
-
-        // Then return the image
-        return characterIcon;
-    } catch (error) {
-        console.error(error.message);
-    }
+    return fetchImage(characterIconApi);
 }
 
 export async function fetchCharacterNamecard(character) {
@@ -66,41 +58,36 @@ export async function fetchCharacterNamecard(character) {
         return `assets/traveler/traveler-namecard.png`;
     }
 
-    try {
-        const response = await fetch(characterNamecardApi);
-        if (!response.ok) {
-            throw new Error(`Response Status: ${response.status}`);
-        }
-        const characterNamecardBlob = await response.blob();
-
-        // Convert blob into an image
-        const characterNamecard = URL.createObjectURL(characterNamecardBlob);
-
-        // Then return the image
-        return characterNamecard;
-    } catch (error) {
-        console.error(error.message);
-    }
+    return fetchImage(characterNamecardApi);
 }
 
 export async function fetchCharacterFavicon(character) {
     // This should be icon-side but some characters doesn't have them
     // So I settled with the plain icon
     const characterFaviconApi = `https://genshin.jmp.blue/characters/${character}/icon`;
+    return fetchImage(characterFaviconApi);
+}
+
+export async function fetchCharacterTalents(character) {
+    const characterNormalApi = `https://genshin.jmp.blue/characters/${character}/talent-na`;
+    const characterSkillApi = `https://genshin.jmp.blue/characters/${character}/talent-skill`;
+    const characterBurstApi = `https://genshin.jmp.blue/characters/${character}/talent-burst`;
 
     try {
-        const response = await fetch(characterFaviconApi);
-        if (!response.ok) {
-            throw new Error(`Response Status: ${response.status}`);
-        }
-        const characterFaviconBlob = await response.blob();
+        // Fetch all talents independently
+        const [normalTalent, skillTalent, burstTalent] = await Promise.all([
+            fetchImage(characterNormalApi),
+            fetchImage(characterSkillApi),
+            fetchImage(characterBurstApi),
+        ]);
 
-        // Convert blob into an image
-        const characterFavicon = URL.createObjectURL(characterFaviconBlob);
-
-        // Then return the image
-        return characterFavicon;
+        // Return only the fetched talents
+        return {
+            normalTalent,
+            skillTalent,
+            burstTalent
+        };
     } catch (error) {
         console.error(error.message);
-    } 
+    }
 }

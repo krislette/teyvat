@@ -1,1 +1,1 @@
-export const formatBirthday = (birthday) => birthday.substring(5).startsWith("0") ? birthday.substring(6) : birthday.substring(5);
+export const formatBirthday = (birthday) => birthday.split("-").slice(1).map((date) => date.startsWith("0") ? date.substring(1) : date).join("-");

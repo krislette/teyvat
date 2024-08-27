@@ -20,7 +20,7 @@ async function displayCharacter() {
 
             // Create left & right page HTMLs
             document.querySelector(".left-page").innerHTML = createLeftPageHTML(character);
-            // document.querySelector(".right-page").innerHTML = createRightPageHTML(character);
+            document.querySelector(".right-page").innerHTML = createRightPageHTML(character);
         } else {
             console.error("Character not found.");
         }
@@ -66,55 +66,101 @@ function createLeftPageHTML(character) {
     `;
 }
 
-// function createRightPageHTML(character) {
-//     return `
-//         <div class="details-card">
-//             <!-- Toggle buttons -->
-//             <div class="details-toggle-buttons">
-//                 <button class="toggle-button main-page-button active">
-//                     Main Page
-//                 </button>
-//                 <button class="toggle-button constellations-button">
-//                     Constellations
-//                 </button>
-//             </div>
+function createRightPageHTML(character) {
+    return `
+        <div class="details-card">
+            <!-- Toggle buttons -->
+            <div class="details-toggle-buttons">
+                <button class="toggle-button main-page-button active">
+                    Main Page
+                </button>
+                <button class="toggle-button constellations-button">
+                    Constellations
+                </button>
+            </div>
 
-//             <hr>
+            <hr>
 
-//             <!-- Birthday & Rarity -->
-//             <div class="info-container">
-//                 <!-- Rarity container -->
-//                 <div class="info-box">
-//                     <img src="./assets/icons/achievements-icon.png" alt="Rarity Icon">
+            <!-- Birthday & Rarity -->
+            <div class="info-container">
+                <!-- Rarity container -->
+                <div class="info-box">
+                    <img src="./assets/icons/achievements-icon.png" alt="Rarity Icon">
                     
-//                     <!-- Title and value -->
-//                     <div class="title-value">
-//                         <div class="info-title">
-//                             Rarity
-//                         </div>
-//                         <div class="info-value">
-//                             ${character.rarity}
-//                         </div>
-//                     </div>
-//                 </div>
+                    <!-- Title and value -->
+                    <div class="title-value">
+                        <div class="info-title">
+                            Rarity
+                        </div>
+                        <div class="info-value">
+                            ${character.rarity}
+                        </div>
+                    </div>
+                </div>
                 
-//                 <!-- Birthday Container -->
-//                 <div class="info-box">
-//                     <img src="./assets/icons/abyss-icon.png" alt="Birthday Icon">
+                <!-- Birthday Container -->
+                <div class="info-box">
+                    <img src="./assets/icons/abyss-icon.png" alt="Birthday Icon">
                     
-//                     <!-- Title and valule -->
-//                     <div class="title-value">
-//                         <div class="info-title">
-//                             Birthday
-//                         </div>
-//                         <div class="info-value">
-//                             ${formatBirthday(character.birthday)}
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     `;
-// }
+                    <!-- Title and valule -->
+                    <div class="title-value">
+                        <div class="info-title">
+                            Birthday
+                        </div>
+                        <div class="info-value">
+                            ${formatBirthday(character.birthday)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character Details caption -->
+            <div class="caption">
+                <img src="./assets/icons/white-star-icon.png" alt="White Star Icon">
+                <span>Character Details</span>
+            </div>
+
+            <hr>
+
+            <div class="main-details">
+                <div class="detail-line">
+                    <span class="span-label">Title</span><span>${character.title}</span>
+                </div>
+                <div class="detail-line">
+                    <span class="span-label">Gender</span><span>${character.gender}</span>
+                </div>
+                <div class="detail-line">
+                    <span class="span-label">Weapon</span><span>${character.weapon}</span>
+                </div>
+                <div class="detail-line">
+                    <span class="span-label">Affiliation</span><span>${character.affiliation}</span>
+                </div>
+                <div class="detail-line">
+                    <span class="span-label">Constellation</span><span>${character.constellation}</span>
+                </div>
+            </div>
+            
+            <!-- Character Talents caption -->
+            <div class="caption">
+                <img src="./assets/icons/white-star-icon.png" alt="White Star Icon">
+                <span>Character Talents</span>
+            </div>
+
+            <hr>
+
+            <div class="talents">
+                <div class="talent-containers">
+                    <img src="${character.normalTalent}" alt="Normal Talent Icon">
+                </div>
+                <div class="talent-containers">
+                    <img src="${character.skillTalent}" alt="Skill Talent Icon">
+                </div>
+                <div class="talent-containers">
+                    <img src="${character.burstTalent}" alt="Burst Talent Icon">
+                </div>
+            </div>
+        </div>
+    `;
+}
 
 document.addEventListener("DOMContentLoaded", displayCharacter);

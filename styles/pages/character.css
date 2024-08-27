@@ -259,3 +259,39 @@ hr {
   color: var(--color-dark-brown);
   margin-left: 5px;
 }
+
+.main-details{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.detail-line {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  font-size: 15px;
+  margin-bottom: 8px;
+  background: linear-gradient(to right, rgba(215, 194, 161, 255), rgba(220, 203, 167, 0.1));
+  padding: 2px 4px;
+}
+
+.detail-line:last-child {
+  margin-bottom: 0;
+}
+
+.span-label {
+  color: var(--color-white-front);
+}
+
+.talents {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.talent-containers img {
+  width: 70px;
+  font-size: 12px;
+}

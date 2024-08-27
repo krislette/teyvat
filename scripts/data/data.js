@@ -15,14 +15,14 @@ export async function loadCharacters() {
         const genshinCharacters = await fetchCharacters();
 
         const characterPromises = genshinCharacters.map(async (character) => {
-            const characterProfile = await fetchCharacterProfile(character);
-            const characterIcon = await fetchCharacterIcon(character);
-            const characterNamecard = await fetchCharacterNamecard(character);
-            const characterFavicon = await fetchCharacterFavicon(character);
-            const characterTalents = await fetchCharacterTalents(character);
+            const characterIcon = await fetchCharacterIcon(character.id);
+            const characterNamecard = await fetchCharacterNamecard(character.id);
+            const characterFavicon = await fetchCharacterFavicon(character.id);
+            const characterTalents = await fetchCharacterTalents(character.id);
 
+            // Return character data with other relevant data
             return {
-                ...characterProfile,
+                ...character,
                 ...characterTalents,
                 icon: characterIcon,
                 namecard: characterNamecard,

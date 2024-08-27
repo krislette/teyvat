@@ -32,13 +32,9 @@ async function fetchJson(apiUrl) {
 } 
 
 export async function fetchCharacters() {
-    const genshinCharactersApi = "https://genshin.jmp.blue/characters/";
+    // Used /all endpoint to get all characters w/ profile & removed fetchProfile function
+    const genshinCharactersApi = "https://genshin.jmp.blue/characters/all";
     return fetchJson(genshinCharactersApi);
-}
-
-export async function fetchCharacterProfile(character) {
-    const characterProfileApi = `https://genshin.jmp.blue/characters/${character}`;
-    return fetchJson(characterProfileApi);
 }
 
 export async function fetchCharacterIcon(character) {

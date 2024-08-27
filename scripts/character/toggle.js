@@ -10,5 +10,5 @@ export function toggleButtons() {
     constellationsButton.addEventListener("click", () => {
         constellationsButton.classList.add("active");
         mainPageButton.classList.remove("active");
-    })
+    });
 }

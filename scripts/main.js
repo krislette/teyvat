@@ -1,5 +1,5 @@
-import { characters, loadCharacters } from "./data.js";
-import { handleViewButtons } from "./view.js";
+import { characters, loadCharacters } from "./data/data.js";
+import { handleViewButtons } from "./main/view.js";
 
 async function displayCharacters() {
     // Wait for characters array to get populated

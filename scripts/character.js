@@ -1,4 +1,5 @@
-import { characters, getCharacterById, loadCharacters } from "./data.js";
+import { characters, getCharacterById, loadCharacters } from "./data/data.js";
+import { toggleButtons } from "./character/details.js";
 
 const DESCRIPTION_LIMIT = 200;
 
@@ -13,9 +14,11 @@ async function displayCharacter() {
         const character = getCharacterById(characters, characterId);
 
         if (character) {
-            // Change the icon of the website based on the character
+            // Change the icon & title of the website based on the character
             document.querySelector(".favicon").href = character.favicon;
             document.querySelector("title").textContent = `View ${character.name}`;
+
+            // Create left page HTML
             document.querySelector(".left-page").innerHTML = createLeftPageHTML(character);
         } else {
             console.error("Character not found.");
@@ -23,6 +26,8 @@ async function displayCharacter() {
     } else {
         console.error("Character ID not found in URL.");
     }
+
+    toggleButtons();
 }
 
 function createLeftPageHTML(character) {

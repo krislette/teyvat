@@ -1,6 +1,5 @@
 import { 
     fetchCharacters, 
-    fetchCharacterProfile, 
     fetchCharacterIcon, 
     fetchCharacterNamecard, 
     fetchCharacterFavicon,

@@ -1,5 +1,5 @@
 import { characters, getCharacterById, loadCharacters } from "./data/data.js";
-import { toggleButtons } from "./character/details.js";
+import { toggleButtons } from "./character/toggle.js";
 import { formatDescription } from "./utils/description.js";
 import { formatBirthday } from "./utils/birthday.js";
 

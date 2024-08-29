@@ -14,10 +14,11 @@ export async function loadCharacters() {
         const genshinCharacters = await fetchCharacters();
 
         const characterPromises = genshinCharacters.map(async (character) => {
-            const characterIcon = await fetchCharacterIcon(character.id);
-            const characterNamecard = await fetchCharacterNamecard(character.id);
-            const characterFavicon = await fetchCharacterFavicon(character.id);
-            const characterTalents = await fetchCharacterTalents(character.id);
+            // ! Remove toLowerCase() method after API is fixed
+            const characterIcon = await fetchCharacterIcon(character.id.toLowerCase());
+            const characterNamecard = await fetchCharacterNamecard(character.id.toLowerCase());
+            const characterFavicon = await fetchCharacterFavicon(character.id.toLowerCase());
+            const characterTalents = await fetchCharacterTalents(character.id.toLowerCase());
 
             // Return character data with other relevant data
             return {

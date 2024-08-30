@@ -116,9 +116,9 @@ function createRightPageMainPageHTML(character) {
             <div class="info-title">
               Birthday
             </div>
-            <div class="info-value">
-              ${formatBirthday(character.birthday)}
-            </div>
+            <div class="info-value">${
+              character.birthday === "Unknown" ? "?" : formatBirthday(character.birthday)
+            }</div>
           </div>
         </div>
       </div>
@@ -134,12 +134,12 @@ function createRightPageMainPageHTML(character) {
       <div class="main-details">
         <div class="detail-line">
           <span class="span-label">Title</span><span>${
-            character.title
+            character.title || "Unknown"
           }</span>
         </div>
         <div class="detail-line">
           <span class="span-label">Gender</span><span>${
-            character.gender
+            character.gender || "Female/Male"
           }</span>
         </div>
         <div class="detail-line">

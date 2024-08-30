@@ -1,11 +1,16 @@
 import { characters, loadCharacters } from "./data/data.js";
+import { handleSearch } from "./main/search.js";
 import { handleViewButtons } from "./main/view.js";
 
 async function displayCharacters() {
   // Wait for characters array to get populated
   await loadCharacters();
 
-  const charactersHTML = characters.map((character) => `
+  // Filter characters to display when a search happens
+  const filteredCharacters = filterCharacters();
+
+  // Then create HTML for the matching character/s
+  const charactersHTML = filteredCharacters.map((character) => `
     <div id="${character.id}" class="character-container">
       <div class="character-image-container ${character.rarity === 5 ? "five-star" : "four-star"}">
         <img class="character-image" src="${character.icon}">
@@ -41,6 +46,7 @@ async function displayCharacters() {
   document.querySelector(".characters-grid").innerHTML = charactersHTML;
 
   handleViewButtons();
+  scrollToCharacter();
 
   // Delay screen for 8 seconds before fading out
   // await new Promise(resolve => setTimeout(resolve, 8000));
@@ -56,10 +62,26 @@ async function displayCharacters() {
   // }, 1000);
 }
 
+function filterCharacters() {
+  const params = new URLSearchParams(window.location.search);
+  const search = params.get("search");
+
+  let filteredCharacters = characters;
+
+  // Filter the character that matches the search
+  if (search) {
+      filteredCharacters = characters.filter((character) => {
+        return character.id.includes(search);
+      });
+  }
+
+  return filteredCharacters;
+}
+
 function scrollToCharacter() {
   setTimeout(() => {
     const params = new URLSearchParams(window.location.search);
-    const characterId = params.get("id");
+    const characterId = params.get("id") || params.get("search");
 
     if (characterId) {
       const element = document.getElementById(characterId);
@@ -73,4 +95,5 @@ function scrollToCharacter() {
 document.addEventListener("DOMContentLoaded", async () => {
   await displayCharacters();
   scrollToCharacter();
+  handleSearch();
 });

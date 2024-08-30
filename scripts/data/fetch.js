@@ -68,7 +68,6 @@ export async function fetchCharacterNamecard(character) {
   }
 
   const characterNamecardApi = `https://genshin.jmp.blue/characters/${character}/namecard-background`;
-
   return fetchImage(characterNamecardApi);
 }
 

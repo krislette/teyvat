@@ -62,7 +62,9 @@ export async function fetchCharacterNamecard(character) {
     character === "traveler-pyro" ||
     character === "traveler-cryo"
   ) {
-    return "assets/traveler/traveler-namecard.png";
+    const response = await fetch("assets/traveler/traveler-namecard.png");
+    const blob = await response.blob();
+    return await blobToBase64(blob);
   }
 
   const characterNamecardApi = `https://genshin.jmp.blue/characters/${character}/namecard-background`;

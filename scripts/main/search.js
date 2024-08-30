@@ -19,5 +19,5 @@ export function handleSearch() {
 
 function setUrlHref() {
   const search = document.querySelector(".js-search-bar").value;
-  window.location.href = search === "" ? "/index.html" : `/index.html?search=${search}`;
+  window.location.href = search === "" ? "/index.html" : `/index.html?search=${search.toLowerCase()}`;
 }

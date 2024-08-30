@@ -11,8 +11,13 @@ async function displayCharacters() {
 
   // Then create HTML for the matching character/s
   const charactersHTML = filteredCharacters.map((character) => `
-    <div id="${character.id}" class="character-container">
-      <div class="character-image-container ${character.rarity === 5 ? "five-star" : "four-star"}">
+    <div class="character-container 
+      ${character.id}-container 
+      ${character.vision.toLowerCase()}-container 
+      ${character.nation.toLowerCase()}-container">
+      <div class="character-image-container ${
+        character.rarity === 5 ? "five-star" : "four-star"
+      }">
         <img class="character-image" src="${character.icon}">
 
         <div class="character-rarity">
@@ -35,9 +40,12 @@ async function displayCharacters() {
         }</span>
       </div>
 
-      <div class="character-spacer"></div>
+      <div class="character-spacer">
+      </div>
 
-      <button class="character-view-button button-primary js-character-view-button" data-character-id="${character.id}">
+      <button class="character-view-button button-primary js-character-view-button" data-character-id="${
+        character.id
+      }">
         View Character
       </button>
     </div>
@@ -70,9 +78,11 @@ function filterCharacters() {
 
   // Filter the character that matches the search
   if (search) {
-      filteredCharacters = characters.filter((character) => {
-        return character.id.includes(search);
-      });
+    filteredCharacters = characters.filter((character) => {
+      return character.id.includes(search) ||
+        character.vision.toLowerCase().includes(search) || 
+        character.nation.toLowerCase().includes(search);
+    });
   }
 
   return filteredCharacters;
@@ -81,10 +91,10 @@ function filterCharacters() {
 function scrollToCharacter() {
   setTimeout(() => {
     const params = new URLSearchParams(window.location.search);
-    const characterId = params.get("id") || params.get("search");
+    const scroll = params.get("id") || params.get("search");
 
-    if (characterId) {
-      const element = document.getElementById(characterId);
+    if (scroll) {
+      const element = document.querySelector(`.${scroll}-container`);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }

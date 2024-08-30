@@ -19,6 +19,9 @@ async function displayCharacter() {
       document.querySelector(".favicon").href = character.favicon;
       document.querySelector("title").textContent = `View ${character.name}`;
 
+      // Changing body style to the corresponding character
+      document.documentElement.style.setProperty("--bg-image", `url(${character.namecard})`);
+
       // Create left & right page HTMLs
       document.querySelector(".left-page").innerHTML = createLeftPageHTML(character);
       document.querySelector(".right-page").innerHTML = createRightPageMainPageHTML(character);

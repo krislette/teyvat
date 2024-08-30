@@ -6,6 +6,7 @@
   <title>Character View</title>
 
   <!-- CSS -->
+  <link rel="stylesheet" href="./styles/shared/general.css">
   <link rel="stylesheet" href="./styles/shared/shared.css">
   <link rel="stylesheet" href="./styles/pages/character.css">
 
@@ -13,6 +14,13 @@
   <link rel="icon" class="favicon">
 </head>
 <body>
+  <!-- Div for the return button -->
+  <div class="return-container">
+    <button class="return-button button-primary js-return-button">
+      <img src="./assets/icons/back-icon.png" alt="Back Icon">
+    </button>
+  </div>
+
   <!-- Div for genshin inspired book -->
   <div class="book-container">
     <!-- Book left page -->
@@ -23,7 +31,7 @@
     <div class="right-page">
     </div>
   </div>
-  
+
   <script type="module" src="./scripts/character.js"></script>
 </body>
 </html>

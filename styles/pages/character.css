@@ -5,6 +5,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
   margin: 0;
   background-color: var(--color-white-back);
@@ -43,6 +44,24 @@ hr {
 .book-container::before {
   left: 50%;
   transform: translateX(-50%);
+}
+
+.return-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.return-button {
+  border-radius: 50%;
+  border: 2px solid var(--color-page-slice);
+  background-color: var(--color-character-container);
+  cursor: var(--genshin-cursor);
+}
+
+.return-button img {
+  width: 50px;
+  height: 55px;
 }
 
 .left-page, .right-page {

@@ -6,7 +6,7 @@ async function displayCharacters() {
   await loadCharacters();
 
   const charactersHTML = characters.map((character) => `
-    <div class="character-container">
+    <div id="${character.id}" class="character-container">
       <div class="character-image-container ${character.rarity === 5 ? "five-star" : "four-star"}">
         <img class="character-image" src="${character.icon}">
 
@@ -56,4 +56,21 @@ async function displayCharacters() {
   // }, 1000);
 }
 
-document.addEventListener("DOMContentLoaded", displayCharacters);
+function scrollToCharacter() {
+  setTimeout(() => {
+    const params = new URLSearchParams(window.location.search);
+    const characterId = params.get("id");
+
+    if (characterId) {
+      const element = document.getElementById(characterId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, 100);
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await displayCharacters();
+  scrollToCharacter();
+});

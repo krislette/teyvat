@@ -15,52 +15,80 @@ const indexedDb =
   window.msIndexedDB ||
   window.shimIndexedDB;
 
-// Open an IndexedDB database
-const request = indexedDb.open("charactersDB", 1);
+let db; // Store the opened database instance
 
-request.onupgradeneeded = (event) => {
-  const db = event.target.result;
-  const store = db.createObjectStore("characters", { keyPath: "id" });
-  store.createIndex("id", ["id"], { unique: true });
-};
+const dbPromise = new Promise((resolve, reject) => {
+  const request = indexedDb.open("charactersDb", 1);
+
+  request.onupgradeneeded = (event) => {
+    db = event.target.result;
+    const store = db.createObjectStore("characters", { keyPath: "id" });
+    store.createIndex("id", ["id"], { unique: true });
+  };
+
+  request.onsuccess = (event) => {
+    db = event.target.result;
+    console.log("Database opened successfully.");
+    resolve(db);
+  };
+
+  request.onerror = (event) => {
+    console.error("Failed to open database:", event.target.error);
+    reject(new Error("Failed to open database"));
+  };
+});
 
 function saveToIndexedDB(data) {
-  request.onsuccess = () => {
-    const db = request.result;
-    const transaction = db.transaction("characters", "readwrite");
-    const store = transaction.objectStore("characters");
-    data.forEach((character) => store.put(character));
+  if (!db) {
+    console.error("Database is not opened yet!");
+    return;
+  }
+
+  const transaction = db.transaction("characters", "readwrite");
+  const store = transaction.objectStore("characters");
+  data.forEach((character) => store.put(character));
+
+  transaction.oncomplete = () => {
+    console.log("All data successfully saved to IndexedDB.");
+  };
+
+  transaction.onerror = (event) => {
+    console.error("Transaction failed:", event.target.error);
   };
 }
 
 function getFromIndexedDB() {
   return new Promise((resolve, reject) => {
-    const dbRequest = request;
-    dbRequest.onsuccess = (event) => {
-      const db = event.target.result;
-      const transaction = db.transaction("characters", "readonly");
-      const store = transaction.objectStore("characters");
-      const request = store.getAll();
+    if (!db) {
+      reject(new Error("Database is not opened yet!"));
+      return;
+    }
 
-      request.onsuccess = () => {
-        console.log("Data retrieved from IndexedDB:", request.result);
-        resolve(request.result);
-      };
-      request.onerror = () =>
-        reject(new Error("Failed to retrieve data from IndexedDB"));
+    const transaction = db.transaction("characters", "readonly");
+    const store = transaction.objectStore("characters");
+    const request = store.getAll();
+
+    request.onsuccess = () => {
+      console.log("Data retrieved from IndexedDB:", request.result);
+      resolve(request.result);
     };
-    dbRequest.onerror = () => reject(new Error("Failed to open IndexedDB"));
+
+    request.onerror = () =>
+      reject(new Error("Failed to retrieve data from IndexedDB"));
   });
 }
 
 // Function to load character data and populate the characters array
 export async function loadCharacters() {
+  // Wait for the database to be ready before all 
+  await dbPromise;
+
   const storedData = await getFromIndexedDB();
 
   if (storedData.length > 0) {
     console.log("Loading characters from IndexedDB...");
     characters = storedData;
-    console.log("Succesfully loaded characters from IndexedDB.");
+    console.log("Successfully loaded characters from IndexedDB.");
   } else {
     console.log("Fetching all characters...");
     try {

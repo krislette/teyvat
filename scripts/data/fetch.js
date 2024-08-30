@@ -6,15 +6,25 @@ async function fetchImage(apiUrl) {
             throw new Error(`Failed to fetch ${apiUrl}: ${response.status}`);
         }
 
-        // Convert the blob into an image
+        // Convert into blob
         const blob = await response.blob();
 
-        // Then return the image URL
-        return URL.createObjectURL(blob);
+        // Then convert blob into base 64
+        return blobToBase64(blob);
     } catch (error) {
         console.error(error.message);
         return null;
     }
+}
+
+// Helper function to convert a blob to a Base64 string
+async function blobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+    });
 }
 
 // Helper function for all JSON fetch requests

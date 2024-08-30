@@ -187,7 +187,6 @@ function createRightPageConstellationsHTML(character) {
     `;
 }
 
-
 function toggleButtons() {
     const mainPageButton = document.querySelector(".main-page-button");
     const constellationsButton = document.querySelector(".constellations-button");
@@ -206,6 +205,5 @@ function toggleButtons() {
         toggleButtons();
     });
 }
-
 
 document.addEventListener("DOMContentLoaded", displayCharacter);

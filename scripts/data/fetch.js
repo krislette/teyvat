@@ -53,8 +53,6 @@ export async function fetchCharacterIcon(character) {
 }
 
 export async function fetchCharacterNamecard(character) {
-  const characterNamecardApi = `https://genshin.jmp.blue/characters/${character}/namecard-background`;
-
   if (
     character === "traveler-anemo" ||
     character === "traveler-geo" ||
@@ -64,16 +62,28 @@ export async function fetchCharacterNamecard(character) {
     character === "traveler-pyro" ||
     character === "traveler-cryo"
   ) {
-    return `assets/traveler/traveler-namecard.png`;
+    return "assets/traveler/traveler-namecard.png";
   }
+
+  const characterNamecardApi = `https://genshin.jmp.blue/characters/${character}/namecard-background`;
 
   return fetchImage(characterNamecardApi);
 }
 
 export async function fetchCharacterFavicon(character) {
-  // This should be icon-side but some characters doesn't have them
-  // So I settled with the plain icon
-  const characterFaviconApi = `https://genshin.jmp.blue/characters/${character}/icon`;
+  if (
+    character === "traveler-anemo" ||
+    character === "traveler-geo" ||
+    character === "traveler-electro" ||
+    character === "traveler-dendro" ||
+    character === "traveler-hydro" ||
+    character === "traveler-pyro" ||
+    character === "traveler-cryo"
+  ) {
+    return "assets/traveler/traveler-icon-side.png";
+  }
+
+  const characterFaviconApi = `https://genshin.jmp.blue/characters/${character}/icon-side`;
   return fetchImage(characterFaviconApi);
 }
 

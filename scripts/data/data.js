@@ -8,6 +8,10 @@ import {
 
 export let characters = [];
 
+// Macro definitions for 24 hours refetch and last fetch key
+const TIME_LIMIT = 24 * 60 * 60 * 1000;
+const LAST_FETCH_KEY = "lastFetchTime";
+
 const indexedDb =
   window.indexedDB ||
   window.mozIndexedDB ||
@@ -22,8 +26,13 @@ const dbPromise = new Promise((resolve, reject) => {
 
   request.onupgradeneeded = (event) => {
     db = event.target.result;
-    const store = db.createObjectStore("characters", { keyPath: "id" });
-    store.createIndex("id", ["id"], { unique: true });
+
+    // Object store for characters
+    const characterStore = db.createObjectStore("characters", { keyPath: "id" });
+    characterStore.createIndex("id", ["id"], { unique: true });
+
+    // And a separate object store for last fetch time
+    const timeStore = db.createObjectStore("time", { keyPath: "key" });
   };
 
   request.onsuccess = (event) => {
@@ -78,48 +87,73 @@ function getFromIndexedDB() {
   });
 }
 
-// Function to load character data and populate the characters array
+function saveLastFetchTime() {
+  const transaction = db.transaction("time", "readwrite");
+  const store = transaction.objectStore("time");
+  const lastFetchTime = { key: LAST_FETCH_KEY, timestamp: Date.now() };
+  store.put(lastFetchTime);
+}
+
+function getLastFetchTime() {
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction("time", "readonly");
+    const store = transaction.objectStore("time");
+    const request = store.get(LAST_FETCH_KEY);
+
+    request.onsuccess = () => resolve(request.result?.timestamp || 0);
+    request.onerror = () =>
+      reject(new Error("Failed to retrieve last fetch time from IndexedDB"));
+  });
+}
+
 export async function loadCharacters() {
-  // Wait for the database to be ready before all 
   await dbPromise;
 
-  const storedData = await getFromIndexedDB();
+  const lastFetchTime = await getLastFetchTime();
+  const now = Date.now();
 
-  if (storedData.length > 0) {
-    console.log("Loading characters from IndexedDB...");
-    characters = storedData;
-    console.log("Successfully loaded characters from IndexedDB.");
+  if (now - lastFetchTime > TIME_LIMIT) {
+    console.log("Time limit exceeded. Fetching new data...");
+    await fetchAndStoreCharacters();
+    saveLastFetchTime();
   } else {
-    console.log("Fetching all characters...");
-    try {
-      const genshinCharacters = await fetchCharacters();
-
-      const characterPromises = genshinCharacters.map(async (character) => {
-        // Fetch base64 assets
-        const characterIcon = await fetchCharacterIcon(character.id.toLowerCase());
-        const characterNamecard = await fetchCharacterNamecard(character.id.toLowerCase());
-        const characterFavicon = await fetchCharacterFavicon(character.id.toLowerCase());
-        const characterTalents = await fetchCharacterTalents(character.id.toLowerCase());
-
-        // Return character data with other relevant data
-        return {
-          ...character,
-          ...characterTalents,
-          icon: characterIcon,
-          namecard: characterNamecard,
-          favicon: characterFavicon,
-        };
-      });
-
-      characters = await Promise.all(characterPromises);
-
-      // Save characters to IndexedDB
-      console.log("Saving data to IndexedDB...");
-      saveToIndexedDB(characters);
-      console.log("Successfully fetched all characters.");
-    } catch (error) {
-      console.error(error.message);
+    const storedData = await getFromIndexedDB();
+    if (storedData.length > 0) {
+      console.log("Loading characters from IndexedDB...");
+      characters = storedData;
+    } else {
+      console.log("Fetching data because no data is stored...");
+      await fetchAndStoreCharacters();
     }
+  }
+}
+
+async function fetchAndStoreCharacters() {
+  try {
+    const genshinCharacters = await fetchCharacters();
+    console.log("Fetched characters:", genshinCharacters);
+
+    const characterPromises = genshinCharacters.map(async (character) => {
+      const characterId = character.id.toLowerCase();
+      const characterIcon = await fetchCharacterIcon(characterId);
+      const characterNamecard = await fetchCharacterNamecard(characterId);
+      const characterFavicon = await fetchCharacterFavicon(characterId);
+      const characterTalents = await fetchCharacterTalents(characterId);
+
+      return {
+        ...character,
+        ...characterTalents,
+        icon: characterIcon,
+        namecard: characterNamecard,
+        favicon: characterFavicon,
+      };
+    });
+
+    characters = await Promise.all(characterPromises);
+    saveToIndexedDB(characters);
+    console.log("Successfully fetched and stored all characters.");
+  } catch (error) {
+    console.error(error.message);
   }
 }
 

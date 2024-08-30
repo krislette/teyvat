@@ -86,7 +86,7 @@ function scrollToCharacter() {
     if (characterId) {
       const element = document.getElementById(characterId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
   }, 100);

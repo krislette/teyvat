@@ -83,6 +83,7 @@ hr {
   border: 2px solid var(--color-page-slice);
   background-color: var(--color-character-container);
   cursor: var(--genshin-cursor);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .return-button img {

@@ -1,5 +1,4 @@
 import { characters, getCharacterById, loadCharacters } from "./data/data.js";
-import { toggleButtons } from "./character/toggle.js";
 import { formatDescription } from "./utils/description.js";
 import { formatBirthday } from "./utils/birthday.js";
 
@@ -66,7 +65,7 @@ function createLeftPageHTML(character) {
     `;
 }
 
-function createRightPageHTML(character) {
+export function createRightPageHTML(character) {
     return `
         <div class="details-card">
             <!-- Toggle buttons -->
@@ -161,6 +160,21 @@ function createRightPageHTML(character) {
             </div>
         </div>
     `;
+}
+
+function toggleButtons() {
+    const mainPageButton = document.querySelector(".main-page-button");
+    const constellationsButton = document.querySelector(".constellations-button");
+
+    mainPageButton.addEventListener("click", () => {
+        mainPageButton.classList.add("active");
+        constellationsButton.classList.remove("active");
+    });
+
+    constellationsButton.addEventListener("click", () => {
+        constellationsButton.classList.add("active");
+        mainPageButton.classList.remove("active");
+    });
 }
 
 document.addEventListener("DOMContentLoaded", displayCharacter);

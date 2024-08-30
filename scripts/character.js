@@ -2,6 +2,8 @@ import { characters, getCharacterById, loadCharacters } from "./data/data.js";
 import { formatDescription } from "./utils/description.js";
 import { formatBirthday } from "./utils/birthday.js";
 
+let character = {};
+
 async function displayCharacter() {
     // Fetch the character to be displayed from the URL
     const params = new URLSearchParams(window.location.search);
@@ -10,7 +12,7 @@ async function displayCharacter() {
     if (characterId) {
         await loadCharacters();
 
-        const character = getCharacterById(characters, characterId);
+        character = getCharacterById(characters, characterId);
 
         if (character) {
             // Change the icon & title of the website based on the character
@@ -19,15 +21,15 @@ async function displayCharacter() {
 
             // Create left & right page HTMLs
             document.querySelector(".left-page").innerHTML = createLeftPageHTML(character);
-            document.querySelector(".right-page").innerHTML = createRightPageHTML(character);
+            document.querySelector(".right-page").innerHTML = createRightPageMainPageHTML(character);
+
+            toggleButtons();
         } else {
             console.error("Character not found.");
         }
     } else {
         console.error("Character ID not found in URL.");
     }
-
-    toggleButtons();
 }
 
 function createLeftPageHTML(character) {
@@ -65,7 +67,7 @@ function createLeftPageHTML(character) {
     `;
 }
 
-export function createRightPageHTML(character) {
+function createRightPageMainPageHTML(character) {
     return `
         <div class="details-card">
             <!-- Toggle buttons -->
@@ -101,7 +103,7 @@ export function createRightPageHTML(character) {
                 <div class="info-box">
                     <img src="./assets/icons/abyss-icon.png" alt="Birthday Icon">
                     
-                    <!-- Title and valule -->
+                    <!-- Title and value -->
                     <div class="title-value">
                         <div class="info-title">
                             Birthday
@@ -162,19 +164,48 @@ export function createRightPageHTML(character) {
     `;
 }
 
+function createRightPageConstellationsHTML(character) {
+    return `
+        <div class="details-card">
+            <!-- Toggle buttons -->
+            <div class="details-toggle-buttons">
+                <button class="toggle-button main-page-button">
+                    Main Page
+                </button>
+                <button class="toggle-button constellations-button active">
+                    Constellations
+                </button>
+            </div>
+
+            <hr>
+
+            <!-- Constellations Content -->
+            <div class="constellations-container">
+                <h2>${character.name} - Constellations</h2>
+            </div>
+        </div>
+    `;
+}
+
+
 function toggleButtons() {
     const mainPageButton = document.querySelector(".main-page-button");
     const constellationsButton = document.querySelector(".constellations-button");
 
     mainPageButton.addEventListener("click", () => {
+        document.querySelector(".right-page").innerHTML = createRightPageMainPageHTML(character);
         mainPageButton.classList.add("active");
         constellationsButton.classList.remove("active");
+        toggleButtons();
     });
 
     constellationsButton.addEventListener("click", () => {
+        document.querySelector(".right-page").innerHTML = createRightPageConstellationsHTML(character);
         constellationsButton.classList.add("active");
         mainPageButton.classList.remove("active");
+        toggleButtons();
     });
 }
+
 
 document.addEventListener("DOMContentLoaded", displayCharacter);

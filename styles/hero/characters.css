@@ -2,6 +2,7 @@
 
 .main {
   background-color: var(--color-characters-section);
+  padding-bottom: 6rem;
 }
 
 .characters-heading {

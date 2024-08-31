@@ -2,6 +2,7 @@ import { characters, loadCharacters, getCharacterById } from "./data/data.js";
 import { formatDescription } from "./utils/description.js";
 import { formatBirthday } from "./utils/birthday.js";
 import { formatConstellationLevel } from "./utils/constellation.js"
+import { handleConsButtons } from "./character/constellations.js";
 
 let character = {};
 
@@ -231,37 +232,37 @@ function createRightPageConstellationsHTML(character) {
 
       <div class="cons">
         <div class="cons-container">
-          <button class="cons-button js-cons-button">
+          <button class="cons-button js-cons-button" data-cons-lvl="1">
             <img src="${character.cons1}" alt="Cons Lvl 1">
           </button>
           <span>${formatConstellationLevel(character.constellations[0].name)}</span>
         </div>
         <div class="cons-container">
-          <button class="cons-button js-cons-button">
+          <button class="cons-button js-cons-button" data-cons-lvl="2">
             <img src="${character.cons2}" alt="Cons Lvl 2">
           </button>
           <span>${formatConstellationLevel(character.constellations[1].name)}</span>
         </div>
         <div class="cons-container">
-          <button class="cons-button js-cons-button">
+          <button class="cons-button js-cons-button" data-cons-lvl="3">
             <img src="${character.cons3}" alt="Cons Lvl 3">
           </button>
           <span>${formatConstellationLevel(character.constellations[2].name)}</span>
         </div>
         <div class="cons-container">
-          <button class="cons-button js-cons-button">
+          <button class="cons-button js-cons-button" data-cons-lvl="4">
             <img src="${character.cons4}" alt="Cons Lvl 4">
           </button>
           <span>${formatConstellationLevel(character.constellations[3].name)}</span>
         </div>
         <div class="cons-container">
-          <button class="cons-button js-cons-button">
+          <button class="cons-button js-cons-button" data-cons-lvl="5">
             <img src="${character.cons5}" alt="Cons Lvl 5">
           </button>
           <span>${formatConstellationLevel(character.constellations[4].name)}</span>
         </div>
         <div class="cons-container">
-          <button class="cons-button js-cons-button">
+          <button class="cons-button js-cons-button" data-cons-lvl="6">
             <img src="${character.cons6}" alt="Cons Lvl 6">
           </button>
           <span>${formatConstellationLevel(character.constellations[5].name)}</span>
@@ -287,6 +288,7 @@ function toggleButtons() {
     constellationsButton.classList.add("active");
     mainPageButton.classList.remove("active");
     toggleButtons();
+    handleConsButtons();
   });
 }
 

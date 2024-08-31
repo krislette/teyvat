@@ -46,6 +46,38 @@ hr {
   border: 1px solid var(--color-page-shadow);
 }
 
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); 
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-content {
+  background-color: #fff;
+  padding: 25px 25px 10px 25px;
+  border-radius: 20px;
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 .book-container {
   width: 800px;
   height: 500px;
@@ -401,4 +433,43 @@ hr {
   color: var(--color-blue);
   white-space: nowrap;
   overflow: hidden;
+}
+
+.cons-img-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cons-img-title img {
+  width: 70px;
+  height: 70px;
+}
+
+.cons-img-title h2 {
+  margin: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: -20px;
+  right: -25px;
+  cursor: var(--genshin-cursor);
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+}
+
+.close-button img {
+  width: 50px;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.close-button img:hover {
+  filter: brightness(95%);
+}
+
+.close-button img:active {
+  filter: brightness(80%);
 }

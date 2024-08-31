@@ -1,6 +1,7 @@
 import { characters, loadCharacters, getCharacterById } from "./data/data.js";
 import { formatDescription } from "./utils/description.js";
 import { formatBirthday } from "./utils/birthday.js";
+import { formatConstellationLevel } from "./utils/constellation.js"
 
 let character = {};
 
@@ -203,8 +204,68 @@ function createRightPageConstellationsHTML(character) {
       <hr>
 
       <!-- Constellations Content -->
-      <div class="constellations-container">
-        <h2>${character.name} - Constellations</h2>
+      <div class="info-container">
+        <!-- Constellation container -->
+        <div class="info-box cons-box">
+          <img src="${character.constellationImage}" alt="Cons Shape">
+          
+          <!-- Title and value -->
+          <div class="title-value">
+            <div class="info-title">
+              Constellation
+            </div>
+            <div class="info-value">
+              ${character.constellation}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Character Constellations caption -->
+      <div class="caption">
+        <img src="./assets/icons/white-star-icon.png" alt="White Star Icon">
+        <span>Constellation Levels</span>
+      </div>
+
+      <hr>
+
+      <div class="cons">
+        <div class="cons-container">
+          <button class="cons-button js-cons-button">
+            <img src="${character.cons1}" alt="Cons Lvl 1">
+          </button>
+          <span>${formatConstellationLevel(character.constellations[0].name)}</span>
+        </div>
+        <div class="cons-container">
+          <button class="cons-button js-cons-button">
+            <img src="${character.cons2}" alt="Cons Lvl 2">
+          </button>
+          <span>${formatConstellationLevel(character.constellations[1].name)}</span>
+        </div>
+        <div class="cons-container">
+          <button class="cons-button js-cons-button">
+            <img src="${character.cons3}" alt="Cons Lvl 3">
+          </button>
+          <span>${formatConstellationLevel(character.constellations[2].name)}</span>
+        </div>
+        <div class="cons-container">
+          <button class="cons-button js-cons-button">
+            <img src="${character.cons4}" alt="Cons Lvl 4">
+          </button>
+          <span>${formatConstellationLevel(character.constellations[3].name)}</span>
+        </div>
+        <div class="cons-container">
+          <button class="cons-button js-cons-button">
+            <img src="${character.cons5}" alt="Cons Lvl 5">
+          </button>
+          <span>${formatConstellationLevel(character.constellations[4].name)}</span>
+        </div>
+        <div class="cons-container">
+          <button class="cons-button js-cons-button">
+            <img src="${character.cons6}" alt="Cons Lvl 6">
+          </button>
+          <span>${formatConstellationLevel(character.constellations[5].name)}</span>
+        </div>
       </div>
     </div>
   `;

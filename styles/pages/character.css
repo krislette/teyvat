@@ -341,3 +341,64 @@ hr {
   width: 70px;
   font-size: 12px;
 }
+
+.cons-box {
+  width: 355px;
+}
+
+.cons-box img {
+  width: 90px;
+  height: 90px;
+  filter: brightness(100%);
+}
+
+.cons-box .title-value .info-value {
+  font-size: 20px;
+}
+
+.cons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0 0 0;
+  max-width: 330px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cons-container {
+  width: calc((100% / 3) - 10px);
+  box-sizing: border-box;
+}
+
+.cons-button {
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: var(--genshin-cursor);
+  position: relative;
+}
+
+.cons-button:active img {
+  filter: brightness(50%);
+}
+
+.cons-container img {
+  border: 5px solid var(--color-yellow);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  font-size: 12px;
+}
+
+.cons-container img:hover {
+  border: 5px solid var(--color-brown);
+}
+
+.cons-container span {
+  font-size: 14px;
+  color: var(--color-blue);
+  white-space: nowrap;
+  overflow: hidden;
+}

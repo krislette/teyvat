@@ -24,6 +24,33 @@
   margin-left: 2.5rem;
 }
 
+.message-container {
+  grid-column: span 8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2rem;
+  color: var(--color-yellow);
+}
+
+.message-container img {
+  width: 150px;
+  height: 150px;
+  opacity: 0.3;
+}
+
+.view-all-button {
+  margin-top: 8px;
+  border: 2px solid var(--color-darker-white);
+  background-color: var(--color-creamy-white);
+  border-radius: var(--round-edge);
+  cursor: var(--genshin-cursor);
+  width: 12rem;
+  height: 2.5rem;
+  font-family: "Hanyi Wenhei", sans-serif;
+  color: var(--color-black)
+}
+
 .character-container {
   border-radius: var(--round-edge);
   background-color: var(--color-character-container);

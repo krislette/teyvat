@@ -1,6 +1,7 @@
 import { characters, loadCharacters } from "./data/data.js";
 import { handleSearch } from "./main/search.js";
 import { handleViewButtons } from "./main/view.js";
+import { handleViewAll } from "./main/all.js";
 
 async function displayCharacters() {
   // Wait for characters array to get populated
@@ -51,10 +52,24 @@ async function displayCharacters() {
     </div>
   `).join("");
 
-  document.querySelector(".characters-grid").innerHTML = charactersHTML;
+  const noCharacterHTML = `
+    <div class="message-container">
+      <img src="../assets/icons/paimon-icon.png" alt="Paimon Icon">
+      <p>No characters found</p>
+      <button class="button-primary view-all-button">
+        View all characters
+      </button>
+    </div>
+  `;
+
+  if (filteredCharacters.length > 0) {
+    document.querySelector(".characters-grid").innerHTML = charactersHTML 
+  } else {
+    document.querySelector(".main").innerHTML += noCharacterHTML;
+    handleViewAll();
+  }
 
   handleViewButtons();
-  scrollToCharacter();
 
   // Delay screen for 8 seconds before fading out
   // await new Promise(resolve => setTimeout(resolve, 8000));
@@ -72,20 +87,19 @@ async function displayCharacters() {
 
 function filterCharacters() {
   const params = new URLSearchParams(window.location.search);
-  const search = params.get("search");
+  const search = params.get("search")?.toLowerCase() || "";
 
-  let filteredCharacters = characters;
-
-  // Filter the character that matches the search
-  if (search) {
-    filteredCharacters = characters.filter((character) => {
-      return character.id.includes(search) ||
-        character.vision.toLowerCase().includes(search) || 
-        character.nation.toLowerCase().includes(search);
-    });
+  // Added all search parameter for showing all
+  if (search === "all") {
+    return characters;
   }
 
-  return filteredCharacters;
+  // Then proceed with returning filtered characters if required
+  return characters.filter(character => {
+    return character.id.includes(search) ||
+           character.vision.toLowerCase().includes(search) || 
+           character.nation.toLowerCase().includes(search);
+  });
 }
 
 function scrollToCharacter() {
@@ -97,6 +111,8 @@ function scrollToCharacter() {
       const element = document.querySelector(`.${scroll}-container`);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
+      } else {
+        document.querySelector("#main").scrollIntoView({ behavior: "smooth" });
       }
     }
   }, 100);

@@ -13,11 +13,11 @@ export function handleSearch() {
   const search = params.get("search");
 
   if (search) {
-    document.querySelector(".js-search-bar").value = search;
+    document.querySelector(".js-search-bar").value = search === "none" ? "" : search;
   }
 }
 
 function setUrlHref() {
   const search = document.querySelector(".js-search-bar").value;
-  window.location.href = search === "" ? "/index.html" : `/index.html?search=${search.toLowerCase()}`;
+  window.location.href = search === "" ? "/index.html?search=none" : `/index.html?search=${search.toLowerCase()}`;
 }

@@ -53,15 +53,7 @@ export async function fetchCharacterIcon(character) {
 }
 
 export async function fetchCharacterNamecard(character) {
-  if (
-    character === "traveler-anemo" ||
-    character === "traveler-geo" ||
-    character === "traveler-electro" ||
-    character === "traveler-dendro" ||
-    character === "traveler-hydro" ||
-    character === "traveler-pyro" ||
-    character === "traveler-cryo"
-  ) {
+  if (character.startsWith("traveler")) {
     const response = await fetch("assets/traveler/traveler-namecard.png");
     const blob = await response.blob();
     return await blobToBase64(blob);
@@ -72,15 +64,7 @@ export async function fetchCharacterNamecard(character) {
 }
 
 export async function fetchCharacterFavicon(character) {
-  if (
-    character === "traveler-anemo" ||
-    character === "traveler-geo" ||
-    character === "traveler-electro" ||
-    character === "traveler-dendro" ||
-    character === "traveler-hydro" ||
-    character === "traveler-pyro" ||
-    character === "traveler-cryo"
-  ) {
+  if (character.startsWith("traveler")) {
     return "assets/traveler/traveler-icon-side.png";
   }
 
@@ -94,7 +78,6 @@ export async function fetchCharacterTalents(character) {
   const characterBurstApi = `https://genshin.jmp.blue/characters/${character}/talent-burst`;
 
   try {
-    // Fetch all talents independently
     const [normalTalent, skillTalent, burstTalent] = await Promise.all([
       fetchImage(characterNormalApi),
       fetchImage(characterSkillApi),
@@ -106,6 +89,46 @@ export async function fetchCharacterTalents(character) {
       normalTalent,
       skillTalent,
       burstTalent,
+    };
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+export async function fetchCharacterConstellation(character) {
+  const baseApiUrl = `https://genshin.jmp.blue/characters/${character}/constellation-shape`;
+
+  const characterConstellationApi =
+    character.startsWith("traveler") 
+      ? `${baseApiUrl}-lumine`
+      : baseApiUrl;
+
+  const characterCons1Api = `https://genshin.jmp.blue/characters/${character}/constellation-1`;
+  const characterCons2Api = `https://genshin.jmp.blue/characters/${character}/constellation-2`;
+  const characterCons3Api = `https://genshin.jmp.blue/characters/${character}/constellation-3`;
+  const characterCons4Api = `https://genshin.jmp.blue/characters/${character}/constellation-4`;
+  const characterCons5Api = `https://genshin.jmp.blue/characters/${character}/constellation-5`;
+  const characterCons6Api = `https://genshin.jmp.blue/characters/${character}/constellation-6`;
+
+  try {
+    const [constellationImage, cons1, cons2, cons3, cons4, cons5, cons6] = await Promise.all([
+      fetchImage(characterConstellationApi),
+      fetchImage(characterCons1Api),
+      fetchImage(characterCons2Api),
+      fetchImage(characterCons3Api),
+      fetchImage(characterCons4Api),
+      fetchImage(characterCons5Api),
+      fetchImage(characterCons6Api)
+    ]);
+
+    return {
+      constellationImage,
+      cons1,
+      cons2,
+      cons3,
+      cons4,
+      cons5,
+      cons6
     };
   } catch (error) {
     console.error(error.message);

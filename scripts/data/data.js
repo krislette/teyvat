@@ -4,6 +4,7 @@ import {
   fetchCharacterNamecard,
   fetchCharacterFavicon,
   fetchCharacterTalents,
+  fetchCharacterConstellation,
 } from "./fetch.js";
 
 export let characters = [];
@@ -139,10 +140,12 @@ async function fetchAndStoreCharacters() {
       const characterNamecard = await fetchCharacterNamecard(characterId);
       const characterFavicon = await fetchCharacterFavicon(characterId);
       const characterTalents = await fetchCharacterTalents(characterId);
+      const characterConstellation = await fetchCharacterConstellation(characterId);
 
       return {
         ...character,
         ...characterTalents,
+        ...characterConstellation,
         icon: characterIcon,
         namecard: characterNamecard,
         favicon: characterFavicon,

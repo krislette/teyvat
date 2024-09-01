@@ -9,10 +9,11 @@
   <link rel="stylesheet" href="./styles/shared/shared.css">
   <link rel="stylesheet" href="./styles/shared/general.css">
   <link rel="stylesheet" href="./styles/shared/loading.css">
-  <link rel="stylesheet" href="./styles/hero/left.css">
-  <link rel="stylesheet" href="./styles/hero/middle.css">
-  <link rel="stylesheet" href="./styles/hero/right.css">
-  <link rel="stylesheet" href="./styles/hero/characters.css">
+  <link rel="stylesheet" href="./styles/main/left.css">
+  <link rel="stylesheet" href="./styles/main/middle.css">
+  <link rel="stylesheet" href="./styles/main/right.css">
+  <link rel="stylesheet" href="./styles/main/characters.css">
+  <link rel="stylesheet" href="./styles/main/footer.css">
 
   <!-- Favicon -->
   <link rel="icon" href="./assets/icons/genshin-icon.svg" type="image/x-icon">
@@ -118,7 +119,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link anchor-primary" id="js-scroll-anchor">
+            <a class="nav-link anchor-primary js-scroll-anchor">
               <img class="nav-icon" src="./assets/icons/search-icon.png" alt="Search Icon">
             </a>
           </li>
@@ -139,6 +140,40 @@
     <h1 class="characters-heading">Characters</h1>
     <div class="characters-grid">
     </div>
+  </div>
+
+  <!-- Footer section -->
+  <div class="footer">
+    <!-- Social Icons -->
+    <div class="social">
+      <a href="https://github.com/krislette/" target="_blank">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAAfhJREFUOE+11UmoTnEYx/HPjTKUIYmMC0MsLSyUKclCSlaKBVGGm5CdWN2FrExlcUnCQslCUlbKEGXISpEyy5CSKZT5PHpOHefe+75n49m87zn/3/P9/5/pfzr8B+toyByGafiIh/jeyq8VdDy2YBmmViA/cAWncBTx/I/1Bd2JLvRrE8kTLMHdqq436G5sb5iWkH3AXNwpferQTTiYi3uwAmP72OAiPmEp3mAGXoW2Ch2HBxiIR5iM/lib0KcYggm4iWuYj0u5fgKr69C9RSjbUvAOIxqkIIp4JnW/c8MX1ZO+xJgUnM2qt+NGau5haAo70V1ChyNOV1ok/mo7Yq4fxrr8fwxrSuikbOqSMxHPG0J3YFdqI78LSmiEHeGXNgs3GkK7i6pvSO2FooCLSmg0eYzg4FyMttrcABq5jLEdmdrYoLNaqChO9FzYTywsQrncAjyg6OHI56qKJvzPVaGLcR7Rb1G4EJzE7RyIb+k8HQcQv5H70h5jCn7VJypONg8z03F2NvmcinNcNL0VcTlOh64OjZ1vZdgrEdD7eF1Lw9ecvPL1oUKzsXzo7UKJsOLEz3A9R3ZfDfoFg/LdkaJz1iMm6q/1dfWNLvK6v7jSIqTohK016Ge8R/To8Xox2938o7IT3tYc4ysQl090SQ9rB23Qqj0lfwASh1wWgl1aiwAAAABJRU5ErkJggg==" alt="GitHub Icon"/>
+      </a>
+      <a href="https://github.com/krislette/teyvat" target="_blank">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAAftJREFUOE+11MurTmEUx/HPya0wcckld7nlUlKuYWKIEjNEzBhIkSiXchkIieQyIemcQigm/gHCAGXC6Ui5Z8CMRHhWPa/2u9tnO71l1x7s51nP91nrt357tfkPT1sFsxdm4gte19zZB7PwFp+KcWXoDNzBhBx0E+vxrQRfjOsYkdcvJPBW/IrvIrQfnmM8TmIKluMEdhagQ9JFXRiY3uNYhKU5JmKboPPwEOfyrSFDlB+3jylAV+EW9uEw+mepnmBBGTofD9CeS47M3+Nnumh4Abo6aXkDx7ALQ/EBzzCnDO2NlxiL+xiGSTiIAwXoALzASNzDuHxmN46WofE9OZe/LIF+4xR2NBpQAE9HNHFqyvZrliEyj6qaNC02+F1uRGQTh6qeLamaswVt/8ZU+TQ2I8NtyTLnsR3fS9SJeITBmIbOOp829gbhcbZXGHt/0u0iRudS1+bAWD9ULqO7TCMuuhoHNqMvQpJwQTT0Vcp+D65W6VIHbcSH2eOPWZNl2IhruZGVYvcEGgdnI8wdFlpSB6zrfjGDTakhp7MbYj0aFFnHIGkp09DwTXLCZwR8YbbQFWxoFboy/Xq3k6n34kiGfMSP0jxo4v9L08aQuYsV2ZNPEe/cVjONS2NylQHr0mjsaBUa5+JHOINRGXIpDfHL3QF72v2685V7fwBzO1oWOelTtQAAAABJRU5ErkJggg==" alt="GitHub Repo Icon"/>
+      </a>
+      <a href="https://genshin.hoyoverse.com/en/" target="_blank">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAAmdJREFUOE+11F3Iz2ccx/EXhTw15SE1tmVkplnSbEzcyYnnHGhlFkVDKImkpRYlkZzo3ozlaZYDR5Mc2FrbCs0cWIs1MbHItBU1D7G4vvr+9PPvvm93yu/k//9dv+t6X9+Hz+fbwQt4OrST2RuDcAsXcb+tc21BX8EKzMJrNUgAf8TBsr4HDxovaA26vkTzCTrWDnyOERhbW/sTU3GuDm4J2owl+A/fYia+L9FNRF/8gW44kln8W75PwG8VuBG6BpvwOyZha4niA4wuEZ3KQ5HFugKfgzi/H9cwqgRzPfbUoUMSFh/ezlr9jdN4r5bey/gLx/F+AS5ClGYf5jVCd2EB5mNvgU3HN4joNzc040Re9FIq4udSjncQzb1SRRq/N9C9pNwzo1xV3rdkGb5rgFZ1fxcB/Bg7CmMpmivoQFzGTxifgJ0lzYV4s7G7KbVtmW6kHao4U5Wggr6FX9tphLa2/YCmCvpqqeUl/FOTxrCSSr9M704DqT+G4nxJ/So6YwyOlv1TKmgX3M5NbyQg5LQyOxydrj9rC2hjajia2ZRajlovrUvqWDbl9fT3YnxWq1sd+lUJ4EMMxoVUx2rMKHo9XId+lIX+Og9Ut3+RWqxDI+Ve6JEuC7vezBlxrw4Nn/+CkWnTL9MhdxHq+D+p41Ilu7EMIbcwx1wcaBR/vMc0Ct2Fx6NmIe7Q3mwcSujhcvm0hCwvzQmtbi9Njv+Pn5YGSnQ9pBHg6HrXtOVwTM6R9zAN0inEnhHHWqvQ+DAAG7JJrY3HkOCnaemnpPGsyd8nZRN1jskfzTibI/EknkRXpz4L+lwmewSDjn4WLIyz1QAAAABJRU5ErkJggg==" alt="Genshin Web"/>
+      </a>
+    </div>
+
+    <!-- Shortcuts -->
+    <ul>
+      <li>
+        <a href="#">Home</a>
+      </li>
+      <li>
+        <a href="#main">Characters</a>
+      </li>
+      <li>
+        <a class="js-scroll-anchor">Search</a>
+      </li>
+    </ul>
+
+    <!-- Copyright -->
+    <p class="copyright">
+      Acelle Rosales @ 2024
+    </p>
   </div>
 
   <script type="module" src="./scripts/main.js"></script>

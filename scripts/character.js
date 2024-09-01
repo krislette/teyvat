@@ -140,7 +140,7 @@ function createRightPageMainPageHTML(character) {
       <div class="main-details">
         <div class="detail-line">
           <span class="span-label">Title</span><span>${
-            formatProfile(character.title) || "Unknown"
+            character.title || "Unknown"
           }</span>
         </div>
         <div class="detail-line">

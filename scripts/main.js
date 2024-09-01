@@ -88,6 +88,24 @@ async function displayCharacters() {
   // }, 1000);
 }
 
+function displayNations() {
+  const nations = [
+    "Mondstadt",
+    "Liyue",
+    "Inazuma",
+    "Sumeru",
+    "Fontaine"
+  ]
+
+  const nationsHTML = nations.map((nation) => `
+    <div class="nation-container">
+      <img src="./assets/art/${nation.toLowerCase()}.png" alt="${nation}">
+    </div>
+  `).join("");
+
+  document.querySelector(".nations").innerHTML = nationsHTML;
+}
+
 function filterCharacters() {
   const params = new URLSearchParams(window.location.search);
   const search = params.get("search")?.toLowerCase() || "";
@@ -123,6 +141,7 @@ function scrollToCharacter() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   await displayCharacters();
+  displayNations();
   scrollToCharacter();
   handleSearch();
   handleAnchorSearch();

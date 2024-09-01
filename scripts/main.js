@@ -99,7 +99,8 @@ function displayNations() {
 
   const nationsHTML = nations.map((nation) => `
     <div class="nation-container">
-      <img src="./assets/art/${nation.toLowerCase()}.png" alt="${nation}">
+      <img src="./assets/art/${nation.toLowerCase()}.png" alt="${nation}" class="nation-image">
+      <img src="./assets/icons/${nation.toLowerCase()}-icon.png" alt="${nation} Icon" class="nation-icon">
     </div>
   `).join("");
 

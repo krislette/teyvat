@@ -6,12 +6,13 @@
 }
 
 .nation-container {
-  width: 100%;
   position: relative;
-  z-index: 1;
+  width: 100%;
+  height: auto;
+  display: inline-block;
 }
 
-.nation-container img {
+.nation-image {
   width: 100%;
   object-fit: cover;
   height: 250px;
@@ -20,6 +21,20 @@
   transition: filter 0.3s ease-in-out;
 }
 
-.nation-container img:hover {
+.nation-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  opacity: 0.3;
+}
+
+.nation-container:hover .nation-image {
   filter: brightness(90%);
+}
+
+.nation-container:hover .nation-icon {
+  opacity: 1.0;
 }

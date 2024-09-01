@@ -2,9 +2,7 @@
 
 .footer {
   padding: 100px 0;
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)), 
-    url("../../assets/art/footer.png");
+  background-color: #111111;
   background-size: cover;
   background-position: center;
 }
@@ -51,11 +49,9 @@
 .footer ul li a {
   text-decoration: none;
   color: var(--color-white-front);
-  opacity: 0.75;
 }
 
 .footer ul li a:hover {
-  opacity: 1.0;
   color: var(--color-creamy-white);
 }
 
@@ -69,5 +65,5 @@
   text-align: center;
   font-size: 13px;
   color: var(--color-white-front);
-  opacity: 0.75;
+  opacity: 0.85;
 }

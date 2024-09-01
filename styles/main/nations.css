@@ -1,0 +1,25 @@
+.nations {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: 0;
+}
+
+.nation-container {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.nation-container img {
+  width: 100%;
+  object-fit: cover;
+  height: 250px;
+  display: block;
+  filter: brightness(50%);
+  transition: filter 0.3s ease-in-out;
+}
+
+.nation-container img:hover {
+  filter: brightness(90%);
+}

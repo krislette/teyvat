@@ -13,7 +13,7 @@ export function handleSearch() {
   const search = params.get("search");
 
   if (search) {
-    document.querySelector(".js-search-bar").value = search === "none" ? "" : search;
+    document.querySelector(".js-search-bar").value = search === "none" || search === "all" ? "" : search;
   }
 }
 

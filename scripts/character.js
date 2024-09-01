@@ -1,7 +1,8 @@
 import { characters, loadCharacters, getCharacterById } from "./data/data.js";
 import { formatDescription } from "./utils/description.js";
 import { formatBirthday } from "./utils/birthday.js";
-import { formatConstellationLevel } from "./utils/constellation.js"
+import { formatConstellationLevel } from "./utils/constellation.js";
+import { formatProfile } from "./utils/profile.js"
 import { handleConsButtons } from "./character/constellations.js";
 
 let character = {};
@@ -139,7 +140,7 @@ function createRightPageMainPageHTML(character) {
       <div class="main-details">
         <div class="detail-line">
           <span class="span-label">Title</span><span>${
-            character.title || "Unknown"
+            formatProfile(character.title) || "Unknown"
           }</span>
         </div>
         <div class="detail-line">
@@ -154,12 +155,12 @@ function createRightPageMainPageHTML(character) {
         </div>
         <div class="detail-line">
           <span class="span-label">Affiliation</span><span>${
-            character.affiliation
+            formatProfile(character.affiliation)
           }</span>
         </div>
         <div class="detail-line">
           <span class="span-label">Constellation</span><span>${
-            character.constellation
+            formatProfile(character.constellation)
           }</span>
         </div>
       </div>

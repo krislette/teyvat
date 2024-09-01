@@ -4,6 +4,7 @@ import { handleViewButtons } from "./main/view.js";
 import { handleViewAll } from "./main/all.js";
 import "./main/audio.js";
 import "./main/video.js";
+import { handleAnchorSearch } from "./main/anchor.js";
 
 async function displayCharacters() {
   // Wait for characters array to get populated
@@ -124,4 +125,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   await displayCharacters();
   scrollToCharacter();
   handleSearch();
+  handleAnchorSearch();
 });

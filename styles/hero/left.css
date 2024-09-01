@@ -32,6 +32,22 @@
   outline-color: var(--color-darker-white);
 }
 
+@keyframes pulse {
+  0% {
+    background-color: var(--color-creamy-white);
+  }
+  50% {
+    background-color: var(--color-white-front);
+  }
+  100% {
+    background-color: var(--color-creamy-white);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
 .top-characters-section {
   background-color: var(--color-white-front);
   border-radius: var(--round-edge);

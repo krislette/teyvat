@@ -81,7 +81,14 @@
           </div>
         </div>
 
-        <div class="shortcut-section">
+        <div class="video-section">
+          <video id="genshin-video" autoplay loop muted>
+            <source src="./videos/genshin-intro.mp4" type="video/mp4">
+            <source src="./videos/genshin-intro.webm" type="video/webm">
+          </video>
+          <button class="mute-button">
+            <img src="./assets/icons/mute-icon.png" alt="Mute Icon" class="mute-icon">
+          </button>
         </div>
       </div>
     </div>
@@ -134,7 +141,6 @@
     </div>
   </div>
 
-  <script src="./scripts/main/audio.js"></script>
   <script type="module" src="./scripts/main.js"></script>
 </body>
 </html>

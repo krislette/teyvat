@@ -1,7 +1,7 @@
 const audioButton = document.querySelector(".audio-button");
 const genshinOst = document.querySelector(".genshin-ost");
 
-function handleMusic() {
+export function handleMusic() {
   if (genshinOst.paused) {
     genshinOst.play();
     audioButton.innerHTML = `

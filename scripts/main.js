@@ -2,6 +2,8 @@ import { characters, loadCharacters } from "./data/data.js";
 import { handleSearch } from "./main/search.js";
 import { handleViewButtons } from "./main/view.js";
 import { handleViewAll } from "./main/all.js";
+import "./main/audio.js";
+import "./main/video.js";
 
 async function displayCharacters() {
   // Wait for characters array to get populated

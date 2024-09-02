@@ -2,9 +2,10 @@ import { characters, loadCharacters } from "./data/data.js";
 import { handleSearch } from "./main/search.js";
 import { handleViewButtons } from "./main/view.js";
 import { handleViewAll } from "./main/all.js";
-import "./main/audio.js";
-import "./main/video.js";
 import { handleAnchorSearch } from "./main/anchor.js";
+import { nations } from "./data/nations.js";
+import { handleNationAudio } from "./main/audio.js";
+import "./main/video.js";
 
 export async function displayCharacters() {
   // Wait for characters array to get populated
@@ -95,22 +96,15 @@ export async function displayCharacters() {
 }
 
 function displayNations() {
-  const nations = [
-    "Mondstadt",
-    "Liyue",
-    "Inazuma",
-    "Sumeru",
-    "Fontaine"
-  ]
-
   const nationsHTML = nations.map((nation) => `
-    <div class="nation-container">
+    <div class="nation-container ${nation.toLowerCase}-container">
       <img src="./assets/art/${nation.toLowerCase()}.png" alt="${nation}" class="nation-image">
       <img src="./assets/icons/${nation.toLowerCase()}-icon.png" alt="${nation} Icon" class="nation-icon">
     </div>
   `).join("");
 
   document.querySelector(".nations").innerHTML = nationsHTML;
+  handleNationAudio();
 }
 
 function filterCharacters() {

@@ -118,7 +118,7 @@ function filterCharacters() {
 
   // Then proceed with returning filtered characters if required
   return characters.filter(character => {
-    return character.id.includes(search) ||
+    return character.id.toLowerCase().includes(search) ||
            character.vision.toLowerCase().includes(search) || 
            character.nation.toLowerCase().includes(search);
   });

@@ -1,4 +1,5 @@
 import { displayOverlay } from "../utils/overlay.js";
+import { handleOverlayClose } from "../utils/close.js";
 
 export function handleConsButtons() {
   document.querySelectorAll(".js-cons-button").forEach((button) => {
@@ -8,7 +9,5 @@ export function handleConsButtons() {
     });
   });
 
-  document.querySelector(".js-close-button").addEventListener("click", () => {
-    document.querySelector(".overlay").style.display = "none";
-  });
+  handleOverlayClose();
 }

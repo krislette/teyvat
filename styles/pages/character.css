@@ -57,6 +57,7 @@ hr {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  pointer-events: auto;
 }
 
 .overlay-content {
@@ -66,6 +67,7 @@ hr {
   position: relative;
   max-width: 600px;
   width: 90%;
+  pointer-events: auto;
 }
 
 .book-container {

@@ -1,4 +1,5 @@
 import { displayOverlay } from "../utils/overlay.js";
+import { handleOverlayClose } from "../utils/close.js";
 
 export function handleTalentButtons() {
   document.querySelectorAll(".js-talent-button").forEach((button) => {
@@ -8,7 +9,5 @@ export function handleTalentButtons() {
     });
   });
 
-  document.querySelector(".js-close-button").addEventListener("click", () => {
-    document.querySelector(".overlay").style.display = "none";
-  });
+  handleOverlayClose();
 }

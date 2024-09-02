@@ -155,7 +155,7 @@ function createRightPageMainPageHTML(character) {
         </div>
         <div class="detail-line">
           <span class="span-label">Affiliation</span><span>${
-            formatProfile(character.affiliation)
+            formatProfile(character.affiliation, character.name.toLowerCase())
           }</span>
         </div>
         <div class="detail-line">

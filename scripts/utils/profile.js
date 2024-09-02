@@ -1,3 +1,11 @@
-const PROFILE_LIMIT = 30;
+const PROFILE_LIMIT = 25;
 
-export const formatProfile = (information) => information.length > PROFILE_LIMIT ?  information.substring(0, PROFILE_LIMIT) + ".." : information;
+export function formatProfile(information, character = "normal") {
+  if (character.startsWith("traveler")) {
+    return information;
+  }
+
+  return information.length > PROFILE_LIMIT 
+    ? information.substring(0, PROFILE_LIMIT) + ".." 
+    : information;
+}

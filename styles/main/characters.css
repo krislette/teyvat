@@ -2,23 +2,23 @@
 
 .main {
   background-color: var(--color-characters-section);
-  padding-bottom: 6rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 }
 
 .characters-heading {
   padding-top: 35px;
   margin-bottom: 30px;
-  text-align: center;
-  justify-content: center;
   padding-bottom: 15px;
   color: var(--color-black);
   text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   font-size: 35px;
   font-family: "Hanyi Wenhei Drip", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .characters-grid {
@@ -26,7 +26,7 @@
   grid-template-columns: repeat(8, 1fr);
   gap: 15px;
   width: 87.5%;
-  margin-left: -7rem;
+  margin-left: -7.5rem;
 }
 
 .message-container {
@@ -37,6 +37,7 @@
   font-size: 1.2rem;
   color: var(--color-yellow);
   justify-content: center;
+  height: 100%;
 }
 
 .message-container img {

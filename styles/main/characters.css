@@ -3,6 +3,10 @@
 .main {
   background-color: var(--color-characters-section);
   padding-bottom: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .characters-heading {
@@ -22,7 +26,7 @@
   grid-template-columns: repeat(8, 1fr);
   gap: 15px;
   width: 87.5%;
-  margin-left: 2.5rem;
+  margin-left: -7rem;
 }
 
 .message-container {
@@ -32,6 +36,7 @@
   align-items: center;
   font-size: 1.2rem;
   color: var(--color-yellow);
+  justify-content: center;
 }
 
 .message-container img {

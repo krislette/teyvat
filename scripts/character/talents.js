@@ -1,10 +1,10 @@
 import { displayOverlay } from "../utils/overlay.js";
 
-export function handleConsButtons() {
-  document.querySelectorAll(".js-cons-button").forEach((button) => {
+export function handleTalentButtons() {
+  document.querySelectorAll(".js-talent-button").forEach((button) => {
     button.addEventListener("click", () => {
-      const { consLvl } = button.dataset;
-      displayOverlay(consLvl, "constellation");
+      const { talent } = button.dataset;
+      displayOverlay(talent, "talent");
     });
   });
 

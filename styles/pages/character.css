@@ -364,6 +364,10 @@ hr {
   font-size: 12px;
 }
 
+.talent-button:hover {
+  filter: brightness(0.8);
+}
+
 .cons-box {
   width: 355px;
 }

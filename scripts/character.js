@@ -4,6 +4,7 @@ import { formatBirthday } from "./utils/birthday.js";
 import { formatConstellationLevel } from "./utils/constellation.js";
 import { formatProfile } from "./utils/profile.js"
 import { handleConsButtons } from "./character/constellations.js";
+import { handleTalentButtons } from "./character/talents.js"; 
 
 let character = {};
 
@@ -29,6 +30,7 @@ async function displayCharacter() {
       document.querySelector(".left-page").innerHTML = createLeftPageHTML(character);
       document.querySelector(".right-page").innerHTML = createRightPageMainPageHTML(character);
 
+      handleTalentButtons();
       toggleButtons();
     } else {
       console.error("Character not found.");
@@ -175,15 +177,19 @@ function createRightPageMainPageHTML(character) {
 
       <div class="talents">
         <div class="talent-containers">
-          <img src="${
-            character.normalTalent
-          }" alt="Normal Talent Icon">
+          <button class="cons-button talent-button js-talent-button" data-talent="NORMAL_ATTACK">
+            <img src="${character.normalTalent}" alt="Normal Talent Icon">
+          </button>
         </div>
         <div class="talent-containers">
-          <img src="${character.skillTalent}" alt="Skill Talent Icon">
+          <button class="cons-button talent-button js-talent-button" data-talent="ELEMENTAL_SKILL">
+            <img src="${character.skillTalent}" alt="Skill Talent Icon">
+          </button>
         </div>
-        <div class="talent-containers">
-          <img src="${character.burstTalent}" alt="Burst Talent Icon">
+        <div class="talent-containers talent-button">
+          <button class="cons-button talent-button js-talent-button" data-talent="ELEMENTAL_BURST">
+            <img src="${character.burstTalent}" alt="Burst Talent Icon">
+          </button>
         </div>
       </div>
     </div>
@@ -282,6 +288,7 @@ function toggleButtons() {
     mainPageButton.classList.add("active");
     constellationsButton.classList.remove("active");
     toggleButtons();
+    handleTalentButtons();
   });
 
   constellationsButton.addEventListener("click", () => {

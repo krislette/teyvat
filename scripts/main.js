@@ -65,10 +65,15 @@ async function displayCharacters() {
     </div>
   `;
 
+  const charactersGrid = document.querySelector(".characters-grid");
+  const mainDiv = document.querySelector(".main");
+
   if (filteredCharacters.length > 0) {
-    document.querySelector(".characters-grid").innerHTML = charactersHTML 
+    charactersGrid.innerHTML = charactersHTML;
+    mainDiv.style.height = charactersGrid.scrollHeight > window.innerHeight ? "auto" : "100vh";
   } else {
-    document.querySelector(".main").innerHTML += noCharacterHTML;
+    mainDiv.innerHTML = noCharacterHTML;
+    mainDiv.style.height = "100vh";
     handleViewAll();
   }
 
@@ -127,14 +132,14 @@ function filterCharacters() {
 function scrollToCharacter() {
   setTimeout(() => {
     const params = new URLSearchParams(window.location.search);
-    const scroll = params.get("id") || params.get("search");
-
-    if (scroll) {
-      const element = document.querySelector(`.${scroll}-container`);
+    const scrollId = params.get("id");
+    const scrollSearch = params.get("search");
+    
+    if (scrollId || scrollSearch) {
+      const selector = scrollId ? `.${scrollId}-container` : "#main";
+      const element = document.querySelector(selector);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
-      } else {
-        document.querySelector("#main").scrollIntoView({ behavior: "smooth" });
       }
     }
   }, 100);

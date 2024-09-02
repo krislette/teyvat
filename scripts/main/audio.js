@@ -49,7 +49,7 @@ export function handleNationAudio() {
     });
 
     // And pause nation's audio upon hover exit
-    nation.addEventListener("mouseout", () => {
+    nation.addEventListener("mouseleave", () => {
       allOst[index + 1].pause();
     });
   });

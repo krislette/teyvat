@@ -1,11 +1,17 @@
+import { displayCharacters, scrollToCharacter } from "../main.js";
+
 export function handleSearch() {
-  document.querySelector(".js-search-button").addEventListener("click", () => {
-    setUrlHref();
+  const searchButton = document.querySelector(".js-search-button");
+  const searchBar = document.querySelector(".js-search-bar");
+
+  searchButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    await updateSearchResults();
   });
 
-  document.querySelector(".js-search-bar").addEventListener("keydown", (event) => {
+  searchBar.addEventListener("keydown", async (event) => {
     if (event.key === "Enter") {
-      setUrlHref();
+      await updateSearchResults();
     }
   });
 
@@ -13,11 +19,14 @@ export function handleSearch() {
   const search = params.get("search");
 
   if (search) {
-    document.querySelector(".js-search-bar").value = search === "none" || search === "all" ? "" : search;
+    searchBar.value = search === "none" || search === "all" ? "" : search;
   }
 }
 
-function setUrlHref() {
-  const search = document.querySelector(".js-search-bar").value;
-  window.location.href = search === "" ? "/index.html?search=none" : `/index.html?search=${search.toLowerCase()}`;
+async function updateSearchResults() {
+  const search = document.querySelector(".js-search-bar").value.toLowerCase();
+  window.history.pushState({}, "", search === "" ? "/index.html?search=none" : `/index.html?search=${search}`);
+
+  await displayCharacters();
+  scrollToCharacter();
 }

@@ -6,7 +6,7 @@ import "./main/audio.js";
 import "./main/video.js";
 import { handleAnchorSearch } from "./main/anchor.js";
 
-async function displayCharacters() {
+export async function displayCharacters() {
   // Wait for characters array to get populated
   await loadCharacters();
 
@@ -130,7 +130,7 @@ function filterCharacters() {
   });
 }
 
-function scrollToCharacter() {
+export function scrollToCharacter() {
   setTimeout(() => {
     const params = new URLSearchParams(window.location.search);
     const scrollId = params.get("id");

@@ -8,6 +8,10 @@
   flex-direction: column;
 }
 
+.bottom {
+  padding-bottom: 5rem;
+}
+
 .characters-heading {
   padding-top: 35px;
   margin-bottom: 30px;

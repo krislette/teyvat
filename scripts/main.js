@@ -71,6 +71,7 @@ async function displayCharacters() {
   if (filteredCharacters.length > 0) {
     charactersGrid.innerHTML = charactersHTML;
     mainDiv.style.height = charactersGrid.scrollHeight > window.innerHeight ? "auto" : "100vh";
+    mainDiv.classList.add("bottom");
   } else {
     mainDiv.innerHTML = noCharacterHTML;
     mainDiv.style.height = "100vh";

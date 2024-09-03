@@ -66,15 +66,27 @@ export async function displayCharacters() {
     </div>
   `;
 
-  const charactersGrid = document.querySelector(".characters-grid");
+  // Select the necessary DOM elements
   const mainDiv = document.querySelector(".main");
+  const headerTag = document.querySelector(".characters-heading");
+  const charactersGrid = document.querySelector(".characters-grid");
+  const messageContainer = document.querySelector(".message-container");
 
   if (filteredCharacters.length > 0) {
+    // Populate and show the characters grid
     charactersGrid.innerHTML = charactersHTML;
+    headerTag.style.display = "flex";
+    charactersGrid.style.display = "grid";
+    messageContainer.style.display = "none";
+
     mainDiv.style.height = charactersGrid.scrollHeight > window.innerHeight ? "auto" : "100vh";
     mainDiv.classList.add("bottom");
   } else {
-    mainDiv.innerHTML = noCharacterHTML;
+    // Hide the characters grid and the header to show the message
+    charactersGrid.style.display = "none";
+    headerTag.style.display = "none";
+    messageContainer.innerHTML = noCharacterHTML;
+    messageContainer.style.display = "flex";
     mainDiv.style.height = "100vh";
     handleViewAll();
   }

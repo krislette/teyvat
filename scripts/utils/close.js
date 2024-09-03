@@ -1,7 +1,9 @@
 export function handleOverlayClose() {
+  const overlay = document.querySelector(".overlay");
+
   // Clickable background to enable closing of overlay
   document.querySelector(".overlay").addEventListener("click", () => {
-    document.querySelector(".overlay").style.display = "none";
+    overlay.style.display = "none";
   });
 
   // Disable clicking on the overlay content itself
@@ -11,6 +13,13 @@ export function handleOverlayClose() {
 
   // Close button listener
   document.querySelector(".js-close-button").addEventListener("click", () => {
-    document.querySelector(".overlay").style.display = "none";
+    overlay.style.display = "none";
+  });
+  
+  // Enable ESC button to close overlay as well
+  document.body.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      overlay.style.display = "none";
+    }
   });
 }

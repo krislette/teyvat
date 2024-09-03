@@ -30,7 +30,7 @@ export async function displayOverlay(clickedItem, type) {
   if (itemData) {
     overlayInfo.innerHTML = `
       <div class="cons-img-title">
-        <img src="${imageSrc}" alt="${type === 'constellation' ? `Constellation Level ${clickedItem}` : clickedItem}">
+        <img src="${imageSrc}" alt="${type === "constellation" ? `Constellation Level ${clickedItem}` : clickedItem}">
         <h2>${itemData.name}</h2>
       </div>
       <p><strong>Unlock:</strong> ${itemData.unlock}</p>

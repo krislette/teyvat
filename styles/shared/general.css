@@ -73,3 +73,24 @@ a {
   transform: scale(1.01);
   box-shadow: 0 0 10px var(--color-darker-white);
 }
+
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-container,
+  .right-container {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* TODO: Please edit this future self I'm too lazy right now */
+  .middle-container {
+    width: 100%;
+    padding: 1rem;
+    min-height: auto;
+    margin: 0 auto;
+  }
+}

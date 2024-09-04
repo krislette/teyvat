@@ -103,3 +103,25 @@
   border-radius: 50px;
   background-color: var(--color-darker-white);
 }
+
+@media (max-width: 768px) {
+  .search-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .top-characters-gallery {
+    flex-direction: row;
+    overflow-x: scroll;
+  }
+
+  .gallery {
+    margin: 9px;
+  }
+
+  .top-characters-gallery img {
+    height: auto;
+    width: 100px;
+  }
+}

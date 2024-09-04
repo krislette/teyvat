@@ -66,7 +66,6 @@ export async function displayCharacters() {
     </div>
   `;
 
-  // Select the necessary DOM elements
   const mainDiv = document.querySelector(".main");
   const headerTag = document.querySelector(".characters-heading");
   const charactersGrid = document.querySelector(".characters-grid");
@@ -83,28 +82,44 @@ export async function displayCharacters() {
     mainDiv.classList.add("bottom");
   } else {
     // Hide the characters grid and the header to show the message
+    messageContainer.innerHTML = noCharacterHTML;
     charactersGrid.style.display = "none";
     headerTag.style.display = "none";
-    messageContainer.innerHTML = noCharacterHTML;
     messageContainer.style.display = "flex";
     mainDiv.style.height = "100vh";
     handleViewAll();
   }
 
   handleViewButtons();
+}
 
-  // Delay screen for 8 seconds before fading out
-  // await new Promise(resolve => setTimeout(resolve, 8000));
+async function showLoadingScreen() {
+  const lastVisit = localStorage.getItem("lastVisit");
+  const currentTime = new Date().getTime();
+  const oneHour = 1 * 60 * 60 * 1000;
 
-  // // Trigger fade-out transition
-  // const loadingScreen = document.querySelector(".loading-screen");
-  // loadingScreen.classList.add("hidden");
+  // Check if the last visit was more than an hour ago
+  if (!lastVisit || currentTime - lastVisit > oneHour) {
+    document.querySelector(".loading-screen").style.display = "flex";
 
-  // // Wait for the transition to complete before fully hiding the loading screen
-  // setTimeout(() => {
-  //   loadingScreen.style.display = "none";
-  //   document.querySelector(".hero").style.display = "flex";
-  // }, 1000);
+    // Delay screen for 14 seconds before fading out
+    await new Promise(resolve => setTimeout(resolve, 18000));
+
+    // Trigger fade-out transition
+    const loadingScreen = document.querySelector(".loading-screen");
+    loadingScreen.classList.add("hidden");
+
+    setTimeout(() => {
+      loadingScreen.style.display = "none";
+      document.querySelector(".hero").style.display = "flex";
+
+      localStorage.setItem("lastVisit", currentTime.toString());
+    }, 1000);
+  } else {
+    // Skip loading screen
+    document.querySelector(".loading-screen").style.display = "none";
+    document.querySelector(".hero").style.display = "flex";
+  }
 }
 
 function displayNations() {
@@ -149,11 +164,12 @@ export function scrollToCharacter() {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
-  }, 100);
+  }, 300);
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await displayCharacters();
+  displayCharacters();
+  showLoadingScreen();
   displayNations();
   scrollToCharacter();
   handleSearch();

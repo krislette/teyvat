@@ -9,5 +9,5 @@
 # TODO
 - [ ] Make website responsive
 - [ ] Change UI for "Characters" header
-- [ ] Add character title search
+- [X] Add character title search
 - [X] Fix auto-scroll 

@@ -19,7 +19,8 @@ export async function displayCharacters() {
     <div class="character-container 
       ${character.id}-container 
       ${character.vision.toLowerCase()}-container 
-      ${character.nation.toLowerCase()}-container">
+      ${character.nation.toLowerCase()}-container 
+      ${character.title}">
       <div class="character-image-container ${
         character.rarity === 5 ? "five-star" : "four-star"
       }">
@@ -144,10 +145,16 @@ function filterCharacters() {
   }
 
   // Then proceed with returning filtered characters if required
-  return characters.filter(character => {
-    return character.id.toLowerCase().includes(search) ||
-           character.vision.toLowerCase().includes(search) || 
-           character.nation.toLowerCase().includes(search);
+  return characters.filter((character) => {
+    const id = character.id ? character.id.toLowerCase() : "";
+    const vision = character.vision ? character.vision.toLowerCase() : "";
+    const nation = character.nation ? character.nation.toLowerCase() : "";
+    const title = character.title ? character.title.toLowerCase() : "";
+
+    return id.includes(search) ||
+           vision.includes(search) || 
+           nation.includes(search) || 
+           title.includes(search);
   });
 }
 

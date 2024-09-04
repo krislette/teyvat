@@ -68,14 +68,14 @@ export async function displayCharacters() {
   `;
 
   const mainDiv = document.querySelector(".main");
-  const headerTag = document.querySelector(".characters-heading");
+  const headerContainer = document.querySelector(".heading-container");
   const charactersGrid = document.querySelector(".characters-grid");
   const messageContainer = document.querySelector(".message-container");
 
   if (filteredCharacters.length > 0) {
     // Populate and show the characters grid
     charactersGrid.innerHTML = charactersHTML;
-    headerTag.style.display = "flex";
+    headerContainer.style.display = "flex";
     charactersGrid.style.display = "grid";
     messageContainer.style.display = "none";
 
@@ -85,7 +85,7 @@ export async function displayCharacters() {
     // Hide the characters grid and the header to show the message
     messageContainer.innerHTML = noCharacterHTML;
     charactersGrid.style.display = "none";
-    headerTag.style.display = "none";
+    headerContainer.style.display = "none";
     messageContainer.style.display = "flex";
     mainDiv.style.height = "100vh";
     handleViewAll();

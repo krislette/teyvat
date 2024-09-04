@@ -12,14 +12,42 @@
   padding-bottom: 5rem;
 }
 
+.heading-container {
+  width: 100%;
+  position: relative;
+  padding: 70px 0 130px 0;
+  text-align: center;
+}
+
 .characters-heading {
-  padding-top: 35px;
-  margin-bottom: 30px;
-  padding-bottom: 15px;
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  background-color: transparent;
   color: var(--color-black);
-  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  font-size: 35px;
-  font-family: "Hanyi Wenhei Drip", sans-serif;
+  font-size: 2rem;
+  z-index: 2;
+}
+
+.heading-container h4 {
+  position: absolute;
+  top: 125px;
+  margin: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.characters-icon {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: auto;
+  z-index: 1;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 255) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 .characters-grid {

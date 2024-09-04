@@ -15,8 +15,10 @@
 .heading-container {
   width: 100%;
   position: relative;
-  padding: 70px 0 130px 0;
+  padding: 70px 0 40px 0;
+  display: flex;
   text-align: center;
+  justify-content: center;
 }
 
 .characters-heading {
@@ -31,14 +33,6 @@
   z-index: 2;
 }
 
-.heading-container h4 {
-  position: absolute;
-  top: 125px;
-  margin: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .characters-icon {
   position: absolute;
   top: 80px;
@@ -48,6 +42,10 @@
   height: auto;
   z-index: 1;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 255) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.heading-container h4 {
+  padding-top: 30px;
 }
 
 .characters-grid {

@@ -7,7 +7,7 @@
 ![image](https://github.com/user-attachments/assets/95e5a30a-6214-4f53-88dd-b06baafed816)
 
 # TODO
-[ ] Make website responsive
-[ ] Change UI for "Characters" header
-[ ] Add character title search
-[X] Fix auto-scroll 
+- [ ] Make website responsive
+- [ ] Change UI for "Characters" header
+- [ ] Add character title search
+- [X] Fix auto-scroll 

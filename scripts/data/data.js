@@ -31,9 +31,6 @@ const dbPromise = new Promise((resolve, reject) => {
     // Object store for characters
     const characterStore = db.createObjectStore("characters", { keyPath: "id" });
     characterStore.createIndex("id", ["id"], { unique: true });
-
-    // And a separate object store for last fetch time
-    const timeStore = db.createObjectStore("time", { keyPath: "key" });
   };
 
   request.onsuccess = (event) => {
@@ -89,28 +86,18 @@ function getFromIndexedDB() {
 }
 
 function saveLastFetchTime() {
-  const transaction = db.transaction("time", "readwrite");
-  const store = transaction.objectStore("time");
-  const lastFetchTime = { key: LAST_FETCH_KEY, timestamp: Date.now() };
-  store.put(lastFetchTime);
+  const lastFetchTime = Date.now();
+  localStorage.setItem(LAST_FETCH_KEY, lastFetchTime.toString());
 }
 
 function getLastFetchTime() {
-  return new Promise((resolve, reject) => {
-    const transaction = db.transaction("time", "readonly");
-    const store = transaction.objectStore("time");
-    const request = store.get(LAST_FETCH_KEY);
-
-    request.onsuccess = () => resolve(request.result?.timestamp || 0);
-    request.onerror = () =>
-      reject(new Error("Failed to retrieve last fetch time from IndexedDB"));
-  });
+  return parseInt(localStorage.getItem(LAST_FETCH_KEY)) || 0;
 }
 
 export async function loadCharacters() {
   await dbPromise;
 
-  const lastFetchTime = await getLastFetchTime();
+  const lastFetchTime = getLastFetchTime();
   const now = Date.now();
 
   if (now - lastFetchTime > TIME_LIMIT) {

@@ -8,6 +8,6 @@
 
 # TODO
 - [ ] Make website responsive
-- [ ] Change UI for "Characters" header
+- [X] Change UI for "Characters" header
 - [X] Add character title search
 - [X] Fix auto-scroll 

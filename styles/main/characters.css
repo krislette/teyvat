@@ -203,5 +203,6 @@
 @media (max-width: 450px) {
   .characters-grid {
     grid-template-columns: 1fr;
+    margin: 0;
   }
 }

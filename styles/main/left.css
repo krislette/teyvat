@@ -106,22 +106,19 @@
 
 @media (max-width: 768px) {
   .search-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-bottom: 1rem;
   }
 
   .top-characters-gallery {
     flex-direction: row;
-    overflow-x: scroll;
   }
 
   .gallery {
-    margin: 9px;
+    margin: 5px;
   }
 
   .top-characters-gallery img {
-    height: auto;
     width: 100px;
+    height: auto;
   }
 }

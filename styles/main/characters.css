@@ -82,7 +82,7 @@
   width: 12rem;
   height: 2.5rem;
   font-family: "Hanyi Wenhei", sans-serif;
-  color: var(--color-black)
+  color: var(--color-black);
 }
 
 .character-container {
@@ -93,6 +93,7 @@
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .character-container:hover {

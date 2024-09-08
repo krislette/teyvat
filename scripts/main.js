@@ -14,6 +14,9 @@ export async function displayCharacters() {
   // Filter characters to display when a search happens
   const filteredCharacters = filterCharacters();
 
+  // Sort characters by rarity
+  filteredCharacters.sort((a, b) => b.rarity - a.rarity);
+
   // Then create HTML for the matching character/s
   const charactersHTML = filteredCharacters.map((character) => `
     <div class="character-container 

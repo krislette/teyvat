@@ -40,19 +40,20 @@ a {
 
 .left-container {
   width: 20%;
-  margin-left: 1.5rem;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 1.5rem 3rem;
 }
 
 .middle-container {
   padding: 1.5rem;
   display: flex;
   min-height: 100vh;
+  flex-grow: 1;
+  max-width: 80%;
 }
 
 .right-container {
+  width: 20%;
   margin-top: -18px;
-  margin-left: 2rem;
   height: 100vh;
   padding: 1.5rem;
 }
@@ -95,6 +96,25 @@ a {
     padding: 1rem;
     min-height: auto;
     margin: 0 auto;
+    max-width: 50rem;
+  }
+}
+
+@media (max-width: 1475px) {
+  .middle-container {
+    max-width: 57rem;
+  }
+}
+
+@media (max-width: 1300px) {
+  .middle-container {
+    max-width: 49rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .middle-container {
+    max-width: 39rem;
   }
 }
 
@@ -112,5 +132,9 @@ a {
   .middle-container {
     padding: 0;
     margin: 0;
+  }
+
+  .middle-container {
+    max-width: 50rem;
   }
 }

@@ -177,7 +177,7 @@ export function scrollToCharacter() {
   }, 300);
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   displayCharacters();
   showLoadingScreen();
   displayNations();

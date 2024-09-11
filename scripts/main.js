@@ -97,7 +97,7 @@ export async function displayCharacters() {
   handleViewButtons();
 }
 
-async function showLoadingScreen() {
+function showLoadingScreen() {
   const lastVisit = localStorage.getItem("lastVisit");
   const currentTime = new Date().getTime();
   const oneHour = 1 * 60 * 60 * 1000;
@@ -105,25 +105,23 @@ async function showLoadingScreen() {
   // Check if the last visit was more than an hour ago
   if (!lastVisit || currentTime - lastVisit > oneHour) {
     document.querySelector(".loading-screen").style.display = "flex";
-
-    // Delay screen for 14 seconds before fading out
-    await new Promise(resolve => setTimeout(resolve, 18000));
-
-    // Trigger fade-out transition
-    const loadingScreen = document.querySelector(".loading-screen");
-    loadingScreen.classList.add("hidden");
-
-    setTimeout(() => {
-      loadingScreen.style.display = "none";
-      document.querySelector(".hero").style.display = "flex";
-
-      localStorage.setItem("lastVisit", currentTime.toString());
-    }, 1000);
+    localStorage.setItem("lastVisit", currentTime.toString());
   } else {
-    // Skip loading screen
     document.querySelector(".loading-screen").style.display = "none";
     document.querySelector(".hero").style.display = "flex";
   }
+}
+
+async function hideLoadingScreen() {
+  const loadingScreen = document.querySelector(".loading-screen");
+
+  // Trigger fade-out transition
+  loadingScreen.classList.add("hidden");
+
+  setTimeout(() => {
+    loadingScreen.style.display = "none";
+    document.querySelector(".hero").style.display = "flex";
+  }, 1000);
 }
 
 function displayNations() {
@@ -177,9 +175,10 @@ export function scrollToCharacter() {
   }, 300);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  displayCharacters();
+document.addEventListener("DOMContentLoaded", async () => {
   showLoadingScreen();
+  await displayCharacters();
+  hideLoadingScreen();
   displayNations();
   scrollToCharacter();
   handleSearch();

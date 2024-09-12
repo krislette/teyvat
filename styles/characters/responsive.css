@@ -5,6 +5,7 @@
     flex-direction: column;
     height: auto;
     overflow-y: auto;
+    position: relative;
   }
 
   .book-container {
@@ -12,6 +13,7 @@
     width: 90%;
     height: auto;
     padding: 10px;
+    margin: 20px;
   }
 
   .book-container::before, .book-container::after {
@@ -21,14 +23,14 @@
   .left-page, .right-page {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    height: 500px;
+    margin: 20px 0;
   }
 
   .return-container {
-    top: 10px;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 30px;
+    right: 20px;
+    z-index: 100;
   }
 
   .profile-card {
@@ -36,22 +38,39 @@
     height: auto;
   }
 
-  .info-box img {
-    width: 60px;
-    height: 60px;
+  .details-card {
+    width: 100%;
   }
 
-  .talents img, .cons-container img {
-    width: 50px;
+  .detail-line {
+    font-size: 14px;
+  }
+
+  .toggle-button {
+    width: 140px;
+  }
+
+  .info-box {
+    width: 145px;
     height: 50px;
   }
 
-  .info-container {
-    flex-direction: column;
-    gap: 20px;
+  .info-box img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .cons-box {
+    width: 300px;
   }
 
   .cons {
     gap: 10px;
+  }
+
+  .overlay-content {
+    width: 80%;
+    font-size: 11px;
+    padding: 20px;
   }
 }

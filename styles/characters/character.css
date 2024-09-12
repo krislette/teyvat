@@ -198,7 +198,7 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 250px;
+  width: 70%;
 }
 
 .nation, .vision {
@@ -335,12 +335,13 @@ hr {
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
+  width: 100%;
 }
 
 .detail-line {
   display: flex;
   justify-content: space-between;
-  width: 350px;
+  width: 90%;
   font-size: 15px;
   margin-bottom: 8px;
   background: linear-gradient(to right, rgba(215, 194, 161, 255), rgba(220, 203, 167, 0.1));

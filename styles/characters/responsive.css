@@ -1,11 +1,10 @@
 @import url("/styles/shared/shared.css");
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   body {
     flex-direction: column;
     height: auto;
     overflow-y: auto;
-    position: relative;
   }
 
   .book-container {
@@ -30,7 +29,7 @@
   .return-container {
     top: 30px;
     right: 20px;
-    z-index: 100;
+    position: fixed;
   }
 
   .profile-card {

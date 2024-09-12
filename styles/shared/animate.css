@@ -1,0 +1,25 @@
+.hero {
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hero-visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(0.1px);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion) {
+  .hidden {
+    transition: none;
+  }
+}

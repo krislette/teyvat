@@ -115,12 +115,19 @@ function showLoadingScreen() {
 async function hideLoadingScreen() {
   const loadingScreen = document.querySelector(".loading-screen");
 
-  // Trigger fade-out transition
+  // Trigger fade-out transition for loading screen
   loadingScreen.classList.add("hidden");
 
   setTimeout(() => {
     loadingScreen.style.display = "none";
-    document.querySelector(".hero").style.display = "flex";
+
+    // Display the hero section
+    const heroSection = document.querySelector(".hero");
+    heroSection.style.display = "flex";
+
+    setTimeout(() => {
+      heroSection.classList.add("hero-visible");
+    }, 50);
   }, 1000);
 }
 

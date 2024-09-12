@@ -15,6 +15,10 @@
   <link rel="stylesheet" href="./styles/main/characters.css">
   <link rel="stylesheet" href="./styles/main/nations.css">
   <link rel="stylesheet" href="./styles/main/footer.css">
+  <link rel="stylesheet" href="./styles/shared/animate.css">
+
+  <!-- Animate script -->
+  <script defer src="./scripts/animate.js"></script>
 
   <!-- Favicon -->
   <link rel="icon" href="./assets/icons/genshin-icon.svg" type="image/x-icon">
@@ -28,7 +32,7 @@
   <!-- Landing page -->
   <div class="hero">
     <!-- Landing page left portion -->
-    <div class="left-container">
+    <div class="left-container hidden">
       <div class="search-section">
         <button class="search-button button-primary js-search-button">
           <img class="search-icon" src="./assets/icons/search-icon.png" alt="Search Icon">
@@ -64,7 +68,7 @@
     </div>
   
     <!-- Landing page middle portion -->
-    <div class="middle-container">
+    <div class="middle-container hidden">
       <div class="card">
         <div class="card-image">
           <div class="intro-container">
@@ -157,7 +161,7 @@
   <!-- End of characters content -->
 
   <!-- Start of nation content -->
-  <div class="nations" id="nations">
+  <div class="nations hidden" id="nations">
   </div>
   <!-- Start of nation content -->
 
@@ -169,7 +173,7 @@
   <audio class="nation-ost fontaine-ost" src="./audios/fontaine-ost.mp3" preload="auto" loop></audio>
 
   <!-- Start of footer section -->
-  <div class="footer">
+  <div class="footer hidden">
     <!-- Social Icons -->
     <div class="social">
       <a href="https://github.com/krislette/" target="_blank">

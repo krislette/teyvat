@@ -21,3 +21,21 @@
   opacity: 0;
   pointer-events: none;
 }
+
+@media (max-width: 1024px) {
+  .loading-screen img {
+    width: 35%;
+  }
+}
+
+@media (max-width: 768px) {
+  .loading-screen img {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-screen img {
+    width: 70%;
+  }
+}

@@ -3,9 +3,9 @@
 .main {
   background-color: var(--color-characters-section);
   display: flex;
-  align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+  width: 100%;
 }
 
 .bottom {
@@ -52,8 +52,9 @@
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 15px;
-  width: 87.5%;
-  margin-left: -7.5rem;
+  width: 90%;
+  box-sizing: border-box;
+  padding: 0 2.5rem;
 }
 
 .message-container {
@@ -167,43 +168,40 @@
 
 @media (max-width: 2000px) {
   .characters-grid {
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 
 @media (max-width: 1600px) {
   .characters-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-@media (max-width: 1300px) {
-  .characters-grid {
     grid-template-columns: repeat(5, 1fr);
   }
 }
 
-@media (max-width: 1000px) {
+/* ! FOUND THE BREADKING POINT */
+@media (max-width: 1300px) {
   .characters-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .characters-grid {
     grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .characters-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto;
   }
 }
 
 @media (max-width: 575px) {
   .characters-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 450px) {
-  .characters-grid {
-    grid-template-columns: 1fr;
-    margin: 0;
+    grid-template-columns: repeat(1, 1fr);
+    margin: auto;
   }
 }

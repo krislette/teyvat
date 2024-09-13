@@ -52,6 +52,10 @@
   background-color: var(--color-white-front);
   border-radius: var(--round-edge);
   padding: 1rem;
+  height: 77%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .gallery-header {
@@ -69,14 +73,16 @@
 .star-icon {
   width: auto;
   height: 16px;
-  padding-left: 18px;
 }
 
 .top-characters-gallery {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 90%;
 }
 
 .gallery {
@@ -85,7 +91,7 @@
 }
 
 .top-characters-gallery img {
-  height: 160px;
+  height: 135px;
   width: 230px;
   border-radius: var(--round-edge);
   object-fit: cover;

@@ -3,8 +3,7 @@
 .card {
   position: relative;
   width: 60rem;
-  min-height: 40rem;
-  max-height: 40rem;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -139,7 +138,7 @@
 
 @media (max-width: 768px) {
   .card {
-    height: auto;
+    min-height: 40rem;
   }
 
   .intro-container {

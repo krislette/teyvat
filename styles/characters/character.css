@@ -112,6 +112,10 @@ hr {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
+.return-button:hover {
+  border: 2px solid var(--color-white-front);
+}
+
 .return-button img {
   width: 50px;
   height: 55px;

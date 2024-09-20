@@ -192,12 +192,14 @@
 @media (max-width: 800px) {
   .characters-grid {
     grid-template-columns: repeat(3, 1fr);
+    margin: 0;
   }
 }
 
 @media (max-width: 575px) {
   .characters-grid {
     grid-template-columns: repeat(2, 1fr);
+    margin: 0;
   }
 }
 

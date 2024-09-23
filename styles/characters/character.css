@@ -68,7 +68,27 @@ hr {
   position: relative;
   max-width: 600px;
   width: 90%;
+  height: 70%;
+  max-height: 70%;
   pointer-events: auto;
+}
+
+.description-text {
+  max-height: 50vh;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.description-text::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.description-text::-webkit-scrollbar-track {
+  background: var(--color-creamy-white);
+}
+
+.description-text::-webkit-scrollbar-thumb {
+  background: var(--color-darker-white);
 }
 
 .book-container {

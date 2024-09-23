@@ -34,7 +34,9 @@ export async function displayOverlay(clickedItem, type) {
         <h2>${itemData.name}</h2>
       </div>
       <p><strong>Unlock:</strong> ${itemData.unlock}</p>
-      <p>${itemData.description}</p>
+      <div class="description-text">
+        <p>${itemData.description}</p>
+      </div>
     `;
   } else {
     overlayInfo.innerHTML = "<p>No information available.</p>";

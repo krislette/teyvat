@@ -10,7 +10,11 @@
 # TODO
 
 - [ ] Make website responsive
-- [ ] Fixed size for constellation decsription
+- [x] Fixed size for constellation decsription
 - [x] Change UI for "Characters" header
 - [x] Add character title search
 - [x] Fix auto-scroll
+
+# RELEASE
+
+Website will be released soon... (Probably before September ends)

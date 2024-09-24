@@ -1,19 +1,20 @@
 // Helper function for all image fetch requests
-async function fetchImage(apiUrl) {
+async function fetchImage(apiUrl, defaultImage) {
   try {
     const response = await fetch(apiUrl);
     if (!response.ok) {
-      throw new Error(`Failed to fetch ${apiUrl}: ${response.status}`);
+      console.error(`Failed to fetch ${apiUrl}: ${response.status}`);
+      return defaultImage;
     }
 
     // Convert into blob
     const blob = await response.blob();
 
     // Then convert blob into base 64
-    return blobToBase64(blob);
+    return await blobToBase64(blob);
   } catch (error) {
-    console.error(error.message);
-    return null;
+    console.error(`Error fetching image from ${apiUrl}: ${error.message}`);
+    return defaultImage;
   }
 }
 
@@ -49,27 +50,27 @@ export async function fetchCharacters() {
 
 export async function fetchCharacterIcon(character) {
   const characterIconApi = `https://genshin.jmp.blue/characters/${character}/icon-big`;
-  return fetchImage(characterIconApi);
+  return fetchImage(characterIconApi, "/assets/defaults/default-icon.png");
 }
 
 export async function fetchCharacterNamecard(character) {
   if (character.startsWith("traveler")) {
-    const response = await fetch("assets/traveler/traveler-namecard.png");
+    const response = await fetch("/assets/traveler/traveler-namecard.png");
     const blob = await response.blob();
     return await blobToBase64(blob);
   }
 
   const characterNamecardApi = `https://genshin.jmp.blue/characters/${character}/namecard-background`;
-  return fetchImage(characterNamecardApi);
+  return fetchImage(characterNamecardApi, "/assets/defaults/default-namecard.png");
 }
 
 export async function fetchCharacterFavicon(character) {
   if (character.startsWith("traveler")) {
-    return "assets/traveler/traveler-icon-side.png";
+    return "/assets/traveler/traveler-icon-side.png";
   }
 
   const characterFaviconApi = `https://genshin.jmp.blue/characters/${character}/icon-side`;
-  return fetchImage(characterFaviconApi);
+  return fetchImage(characterFaviconApi, "/assets/defaults/default-side.png");
 }
 
 export async function fetchCharacterTalents(character) {
@@ -79,9 +80,9 @@ export async function fetchCharacterTalents(character) {
 
   try {
     const [normalTalent, skillTalent, burstTalent] = await Promise.all([
-      fetchImage(characterNormalApi),
-      fetchImage(characterSkillApi),
-      fetchImage(characterBurstApi),
+      fetchImage(characterNormalApi, "/assets/defaults/default-circle.png"),
+      fetchImage(characterSkillApi, "/assets/defaults/default-circle.png"),
+      fetchImage(characterBurstApi, "/assets/defaults/default-circle.png"),
     ]);
 
     // Return only the fetched talents
@@ -112,13 +113,13 @@ export async function fetchCharacterConstellation(character) {
 
   try {
     const [constellationImage, cons1, cons2, cons3, cons4, cons5, cons6] = await Promise.all([
-      fetchImage(characterConstellationApi),
-      fetchImage(characterCons1Api),
-      fetchImage(characterCons2Api),
-      fetchImage(characterCons3Api),
-      fetchImage(characterCons4Api),
-      fetchImage(characterCons5Api),
-      fetchImage(characterCons6Api)
+      fetchImage(characterConstellationApi, "/assets/defaults/default-constellation.png"),
+      fetchImage(characterCons1Api, "/assets/defaults/default-circle.png"),
+      fetchImage(characterCons2Api, "/assets/defaults/default-circle.png"),
+      fetchImage(characterCons3Api, "/assets/defaults/default-circle.png"),
+      fetchImage(characterCons4Api, "/assets/defaults/default-circle.png"),
+      fetchImage(characterCons5Api, "/assets/defaults/default-circle.png"),
+      fetchImage(characterCons6Api, "/assets/defaults/default-circle.png")
     ]);
 
     return {

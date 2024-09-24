@@ -1,5 +1,9 @@
 @import url("/styles/shared/shared.css");
 
+:root {
+  --bg-image: url("../../assets/defaults/default-namecard.png");
+}
+
 body {
   font-family: "Hanyi Wenhei", sans-serif;
   display: flex;

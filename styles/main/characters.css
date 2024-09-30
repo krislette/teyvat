@@ -1,4 +1,4 @@
-@import url("/styles/shared/shared.css");
+@import url("../../styles/shared/shared.css");
 
 .main {
   background-color: var(--color-characters-section);

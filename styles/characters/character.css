@@ -1,4 +1,4 @@
-@import url("/styles/shared/shared.css");
+@import url("../../styles/shared/shared.css");
 
 :root {
   --bg-image: url("../../assets/defaults/default-namecard.png");

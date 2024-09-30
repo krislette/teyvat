@@ -62,7 +62,7 @@ export async function displayCharacters() {
 
   const noCharacterHTML = `
     <div class="message-container">
-      <img src="../assets/icons/paimon-icon.png" alt="Paimon Icon">
+      <img src="/teyvat/assets/icons/paimon-icon.png" alt="Paimon Icon">
       <p>No characters found</p>
       <button class="button-primary view-all-button">
         View all characters

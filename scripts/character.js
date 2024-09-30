@@ -303,7 +303,7 @@ function toggleButtons() {
 document.querySelector(".js-return-button").addEventListener("click", () => {
   const params = new URLSearchParams(window.location.search);
   const characterId = params.get("id");
-  window.location.href = `index.html?id=${characterId}`;
+  window.location.href = `/teyvat/index?id=${characterId}`;
 });
 
 document.addEventListener("DOMContentLoaded", displayCharacter);

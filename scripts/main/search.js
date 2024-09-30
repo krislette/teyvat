@@ -25,7 +25,7 @@ export function handleSearch() {
 
 async function updateSearchResults() {
   const search = document.querySelector(".js-search-bar").value.toLowerCase();
-  window.history.pushState({}, "", search === "" ? "/index.html?search=none" : `/index.html?search=${search}`);
+  window.history.pushState({}, "", search === "" ? "/teyvat/index?search=none" : `/teyvat/index?search=${search}`);
 
   await displayCharacters();
   scrollToCharacter();

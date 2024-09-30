@@ -16,7 +16,7 @@
   height: 40rem;
   background-color: var(--color-white-front);
   border-radius: var(--circle-edge);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/assets/art/hero.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../assets/art/hero.png");
   background-size: cover;
   background-position: center;
 }

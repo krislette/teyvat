@@ -17,4 +17,13 @@
 
 # RELEASE
 
-Website will be released soon... (Probably before September ends)
+The <strong>beta version</strong> web app was released on September 30, 2024.
+
+> The dev will work on the responsiveness of the
+> website on other platforms in the future. A more organized README will also be released in the succeeding days.
+
+Device Support:
+
+- [x] Laptops
+- [x] Mobile Phones
+- [ ] Tablets

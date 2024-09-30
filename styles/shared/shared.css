@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Hanyi Wenhei";
-  src: url(/fonts/zh-cn.ttf);
+  src: url("../../fonts/zh-cn.ttf");
 }
 
 @font-face {
   font-family: "Hanyi Wenhei Drip";
-  src: url(/fonts/zh-cn-drip.ttf);
+  src: url("../../fonts/zh-cn-drip.ttf");
 }
 
 :root {
